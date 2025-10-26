@@ -21,8 +21,8 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToAbout = () => {
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToContact = () => {
@@ -72,10 +72,10 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <button
-                  onClick={scrollToProjects}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300 shadow-lg shadow-gray-500/25"
-                >
+                    <button
+                      onClick={scrollToAbout}
+                      className="group relative px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300 shadow-lg shadow-gray-500/25"
+                    >
                   <span className="relative z-10 flex items-center gap-2 text-white">
                     View More
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" />
