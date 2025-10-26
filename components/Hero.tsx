@@ -139,7 +139,7 @@ export default function Hero() {
                        <div className="mb-6">
                          {currentAnimation === 0 && (
                            <motion.img
-                             src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif"
+                             src="https://share.google/images/VsroCpDeZv4LV6CSA"
                              alt="Data Pipeline Animation"
                              className="w-80 h-80 object-contain"
                              animate={{ 
@@ -154,7 +154,7 @@ export default function Hero() {
                          )}
                          {currentAnimation === 1 && (
                            <motion.img
-                             src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
+                             src="https://share.google/images/tjJmIdn4FLZ43hTR4"
                              alt="Data Analytics Animation"
                              className="w-80 h-80 object-contain"
                              animate={{ 
@@ -169,7 +169,7 @@ export default function Hero() {
                          )}
                          {currentAnimation === 2 && (
                            <motion.img
-                             src="https://media.giphy.com/media/3o7TKSjRrfIPjeiVy/giphy.gif"
+                             src="https://share.google/images/RsExyBD1eQwZrzaZM"
                              alt="Business Strategy Animation"
                              className="w-80 h-80 object-contain"
                              animate={{ 
