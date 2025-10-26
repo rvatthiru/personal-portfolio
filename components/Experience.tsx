@@ -282,7 +282,7 @@ export default function Experience() {
               <h3 className="text-lg font-semibold text-white mb-3">Tools & Technologies</h3>
               <div className="flex flex-wrap gap-2">
                 {selectedExperience.tools.map((tool, i) => (
-                  <span key={i} className="px-2 py-1 bg-gradient-to-r from-gray-600 to-gray-400 rounded-full text-xs text-white">
+                  <span key={i} className="px-2 py-1 bg-gradient-to-r from-gray-500 to-gray-300 rounded-full text-xs text-gray-900 font-medium">
                     {tool}
                   </span>
                 ))}
