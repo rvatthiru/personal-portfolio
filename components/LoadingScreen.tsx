@@ -70,8 +70,16 @@ export default function LoadingScreen() {
           className="mb-8"
         >
           <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-200 bg-clip-text text-transparent mb-4">
-            Hello there 👋
+            Hello there
           </div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="text-6xl md:text-8xl"
+          >
+            👋
+          </motion.div>
         </motion.div>
 
         {/* Welcome Text */}
