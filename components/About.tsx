@@ -34,9 +34,6 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
-                I&apos;m a data storyteller who believes that data tells, but story sells.
-              </p>
-              <p className="text-gray-300 text-lg mb-4 leading-relaxed">
                 With a Master&apos;s in Business Analytics & AI from UTD and 4+ years of experience in Data Analytics, BI, and Data Science, I transform raw data into narratives that drive strategy and measurable business impact.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
