@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react';
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -14,7 +16,7 @@ export default function LoadingScreen() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!isLoading) return null;
+  if (!isLoading || !isClient) return null;
 
   return (
     <motion.div
@@ -62,8 +64,8 @@ export default function LoadingScreen() {
             <motion.div
               key={i}
               initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: window.innerHeight + 100,
+                x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : Math.random() * 1200,
+                y: typeof window !== 'undefined' ? window.innerHeight + 100 : 800,
                 opacity: 0
               }}
               animate={{ 
