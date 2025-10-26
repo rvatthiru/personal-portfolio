@@ -16,8 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className={`${inter.className} bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white`}>
-        {children}
+      <body className={`${inter.className} bg-black text-white antialiased`}>
+        <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black">
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -25,11 +25,11 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Animated gradient background */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute w-96 h-96 rounded-full blur-3xl opacity-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+          className="absolute w-96 h-96 rounded-full blur-3xl opacity-30 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
           style={{
             transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`,
             transition: 'transform 0.3s ease-out'
