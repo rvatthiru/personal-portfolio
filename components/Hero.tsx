@@ -139,9 +139,12 @@ export default function Hero() {
                        <div className="mb-6">
                          {currentAnimation === 0 && (
                            <motion.img
-                             src="https://share.google/images/VsroCpDeZv4LV6CSA"
+                             src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif"
                              alt="Data Pipeline Animation"
                              className="w-80 h-80 object-contain"
+                             onError={(e) => {
+                               e.currentTarget.src = 'https://via.placeholder.com/320x320/374151/9ca3af?text=Building+Data+Pipelines';
+                             }}
                              animate={{ 
                                scale: [1, 1.02, 1]
                              }}
@@ -154,9 +157,12 @@ export default function Hero() {
                          )}
                          {currentAnimation === 1 && (
                            <motion.img
-                             src="https://share.google/images/tjJmIdn4FLZ43hTR4"
+                             src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
                              alt="Data Analytics Animation"
                              className="w-80 h-80 object-contain"
+                             onError={(e) => {
+                               e.currentTarget.src = 'https://via.placeholder.com/320x320/374151/9ca3af?text=Turning+Data+Into+Insights';
+                             }}
                              animate={{ 
                                scale: [1, 1.02, 1]
                              }}
@@ -169,9 +175,12 @@ export default function Hero() {
                          )}
                          {currentAnimation === 2 && (
                            <motion.img
-                             src="https://share.google/images/RsExyBD1eQwZrzaZM"
+                             src="https://media.giphy.com/media/3o7TKSjRrfIPjeiVy/giphy.gif"
                              alt="Business Strategy Animation"
                              className="w-80 h-80 object-contain"
+                             onError={(e) => {
+                               e.currentTarget.src = 'https://via.placeholder.com/320x320/374151/9ca3af?text=Driving+Business+Decisions';
+                             }}
                              animate={{ 
                                scale: [1, 1.02, 1]
                              }}
