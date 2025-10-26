@@ -74,14 +74,20 @@ export default function Projects() {
     setSelectedProject(null);
   };
 
-  // Auto-close modal when navigating to different sections
+  // Auto-close modal when scrolling or navigating to different sections
   useEffect(() => {
-    const handleSectionNavigation = () => {
+    let lastScrollY = 0;
+    
+    const handleScroll = () => {
       if (selectedProject) {
+        const currentScrollY = window.scrollY;
+        const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+        
         // Get all section elements
         const sections = [
           { id: 'home', element: document.getElementById('home') },
           { id: 'about', element: document.getElementById('about') },
+          { id: 'experience', element: document.getElementById('experience') },
           { id: 'skills', element: document.getElementById('skills') },
           { id: 'projects', element: document.getElementById('projects') },
           { id: 'contact', element: document.getElementById('contact') }
@@ -109,19 +115,26 @@ export default function Projects() {
           }
         });
         
-        // If user is not in projects section, close modal
-        if (currentSection !== 'projects') {
+        // Close modal if:
+        // 1. User is not in projects section, OR
+        // 2. User has scrolled significantly within projects section
+        if (currentSection !== 'projects' || scrollDelta > 50) {
           closeModal();
         }
+        
+        lastScrollY = currentScrollY;
       }
     };
 
     if (selectedProject) {
+      // Initialize scroll position
+      lastScrollY = window.scrollY;
+      
       // Use a debounced scroll handler to avoid too many calls
       let timeoutId: NodeJS.Timeout;
       const debouncedHandler = () => {
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(handleSectionNavigation, 200);
+        timeoutId = setTimeout(handleScroll, 100);
       };
 
       window.addEventListener('scroll', debouncedHandler);
