@@ -8,15 +8,13 @@ import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import Navbar from '@/components/Navbar';
 import LoadingScreen from '@/components/LoadingScreen';
-import InteractiveBackground from '@/components/InteractiveBackground';
 
 export default function Home() {
   return (
     <>
       <LoadingScreen />
-      <InteractiveBackground />
       <Navbar />
-      <main className="relative z-10 min-h-screen">
+      <main className="relative z-10 min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black">
         <Hero />
         <About />
         <Experience />
