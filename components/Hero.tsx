@@ -93,13 +93,8 @@ export default function Hero() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: -20 }}
               transition={{ duration: 0.5 }}
-                     className="relative w-full max-w-lg h-96 bg-gray-800 rounded-2xl border border-gray-700 flex flex-col items-center justify-center overflow-hidden"
+                     className="relative w-full max-w-2xl h-auto flex flex-col items-center justify-center"
             >
-                     {/* Minimalist Background */}
-                     <div className="absolute inset-0 overflow-hidden">
-                       {/* Subtle gradient overlay */}
-                       <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 to-gray-900/50" />
-                     </div>
 
                      {/* Animated GIFs */}
                      <motion.div
@@ -116,7 +111,7 @@ export default function Hero() {
                            <motion.img
                              src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif"
                              alt="Data Pipeline Animation"
-                             className="w-48 h-48 object-contain rounded-lg"
+                             className="w-80 h-80 object-contain"
                              animate={{ 
                                scale: [1, 1.02, 1]
                              }}
@@ -131,7 +126,7 @@ export default function Hero() {
                            <motion.img
                              src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
                              alt="Data Analytics Animation"
-                             className="w-48 h-48 object-contain rounded-lg"
+                             className="w-80 h-80 object-contain"
                              animate={{ 
                                scale: [1, 1.02, 1]
                              }}
@@ -146,7 +141,7 @@ export default function Hero() {
                            <motion.img
                              src="https://media.giphy.com/media/3o7TKSjRrfIPjeiVy/giphy.gif"
                              alt="Business Strategy Animation"
-                             className="w-48 h-48 object-contain rounded-lg"
+                             className="w-80 h-80 object-contain"
                              animate={{ 
                                scale: [1, 1.02, 1]
                              }}
@@ -168,7 +163,7 @@ export default function Hero() {
                          transition={{ duration: 0.3 }}
                          className="text-center"
                        >
-                         <div className="text-xl md:text-2xl font-bold text-white">
+                         <div className="text-xl md:text-2xl text-white">
                            {animations[currentAnimation]}
                          </div>
                        </motion.div>
