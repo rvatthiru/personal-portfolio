@@ -146,7 +146,7 @@ export default function Projects() {
   }, [selectedProject]);
 
   return (
-    <section className="py-24 px-6 bg-transparent relative" id="projects">
+    <section className="py-16 px-6 bg-transparent relative" id="projects">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -18,7 +18,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-24 px-6 bg-transparent relative" id="contact">
+    <section className="py-16 px-6 bg-transparent relative" id="contact">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
