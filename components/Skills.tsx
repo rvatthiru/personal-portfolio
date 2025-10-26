@@ -7,7 +7,7 @@ import { useRef } from 'react';
 const skillCategories = [
   {
     name: 'Tools & Platforms',
-    skills: ['Power BI', 'Power Apps', 'Power Automate', 'Excel', 'ClickHouse', 'DBT', 'Airbyte'],
+    skills: ['Power BI', 'Power Apps', 'Power Automate', 'ClickHouse', 'DBT'],
     level: 9
   },
   {
@@ -17,12 +17,12 @@ const skillCategories = [
   },
   {
     name: 'Data & Cloud',
-    skills: ['Azure', 'Hadoop', 'MongoDB', 'Databricks'],
+    skills: ['Azure', 'Hadoop', 'Databricks'],
     level: 8
   },
   {
     name: 'AI/ML & Analytics',
-    skills: ['Machine Learning', 'Deep Learning', 'Feature Engineering', 'Fine Tuning', 'GenAI', 'LLMs'],
+    skills: ['Machine Learning', 'Feature Engineering', 'Fine Tuning', 'GenAI', 'LLMs'],
     level: 8
   }
 ];
