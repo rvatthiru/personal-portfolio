@@ -64,7 +64,8 @@ export default function Hero() {
                        transition={{ duration: 0.8, delay: 0.4 }}
                      >
                        A data storyteller who turns complexity into clarity.<br />
-                       I design analytics, dashboards, and predictive systems that empower real business decisions across marketing, finance, and operations.
+                       I design analytics, dashboards, and predictive systems that empower real business decisions across marketing, finance, and operations.<br />
+                       Let&apos;s turn your data into strategy.
                      </motion.p>
 
               <motion.div 
