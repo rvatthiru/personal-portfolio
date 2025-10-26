@@ -34,9 +34,8 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
-                I&apos;m currently pursuing my M.S. in Business Analytics and Artificial Intelligence (STEM) 
-                at The University of Texas at Dallas with a GPA of 3.97, specializing in Advanced Statistics, 
-                Predictive Analytics, Machine Learning, and Deep Learning.
+                I&apos;m pursuing my M.S. in Business Analytics and AI at UT Dallas (GPA: 3.97), 
+                specializing in Advanced Statistics, Predictive Analytics, Machine Learning, and Deep Learning.
               </p>
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
                 With 4+ years of experience in data analytics and business intelligence, I&apos;ve built 
@@ -58,42 +57,11 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="relative"
             >
-              {/* Decorative gradient circle */}
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-400 rounded-3xl blur-3xl opacity-20" />
-              
-              <div className="relative bg-gray-800 rounded-3xl p-8 border border-gray-700">
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-400 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">🎓</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Education</h3>
-                      <p className="text-gray-400">M.S. Business Analytics & AI, UT Dallas (GPA: 3.97)</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-300 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">🏆</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Certifications</h3>
-                      <p className="text-gray-400">Microsoft Data Analyst Associate</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-gray-400 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">⚡</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Impact</h3>
-                      <p className="text-gray-400">40% reduction in SLA breaches, $2.5M+ savings</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img 
+                src="https://drive.google.com/uc?export=view&id=18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII"
+                alt="Thirunarayanan Raman"
+                className="w-full h-auto rounded-3xl object-cover"
+              />
             </motion.div>
           </div>
         </motion.div>

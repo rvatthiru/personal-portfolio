@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, Download, Linkedin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Hero() {
@@ -27,6 +27,14 @@ export default function Hero() {
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const downloadCV = () => {
+    window.open('https://drive.google.com/file/d/16_6ZrvXWoXIyaqSFytwp9hftk_3WHi7U/view?usp=sharing', '_blank');
+  };
+
+  const openLinkedIn = () => {
+    window.open('https://www.linkedin.com/in/thirunarayanan-raman', '_blank');
   };
 
   return (
@@ -59,28 +67,50 @@ export default function Hero() {
                      </motion.p>
 
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                       <button
-                         onClick={scrollToProjects}
-                         className="group relative px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300 shadow-lg shadow-gray-500/25"
-                       >
-                         <span className="relative z-10 flex items-center gap-2 text-white">
-                           View Projects
-                           <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                         </span>
-                       </button>
+                <button
+                  onClick={scrollToProjects}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300 shadow-lg shadow-gray-500/25"
+                >
+                  <span className="relative z-10 flex items-center gap-2 text-white">
+                    View More
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
 
-                       <button
-                         onClick={scrollToContact}
-                         className="group px-8 py-4 border-2 border-gray-400 rounded-full font-semibold hover:bg-gray-400 hover:bg-opacity-10 transition-all duration-300 flex items-center gap-2 text-gray-300 hover:text-gray-200"
-                       >
-                         <Mail className="w-5 h-5" />
-                         Contact Me
-                       </button>
+                <button
+                  onClick={downloadCV}
+                  className="group px-8 py-4 border-2 border-gray-400 rounded-full font-semibold hover:bg-gray-400 hover:bg-opacity-10 transition-all duration-300 flex items-center gap-2 text-gray-300 hover:text-gray-200"
+                >
+                  <Download className="w-5 h-5" />
+                  Download CV
+                </button>
+              </motion.div>
+
+              {/* Social Icons */}
+              <motion.div 
+                className="flex gap-4 justify-center lg:justify-start items-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+              >
+                <button
+                  onClick={scrollToContact}
+                  className="p-3 border border-gray-400 rounded-full hover:bg-gray-400 hover:bg-opacity-10 transition-all duration-300 text-gray-300 hover:text-gray-200"
+                >
+                  <Mail className="w-6 h-6" />
+                </button>
+                
+                <button
+                  onClick={openLinkedIn}
+                  className="p-3 border border-gray-400 rounded-full hover:bg-gray-400 hover:bg-opacity-10 transition-all duration-300 text-gray-300 hover:text-gray-200"
+                >
+                  <Linkedin className="w-6 h-6" />
+                </button>
               </motion.div>
             </motion.div>
           </div>
