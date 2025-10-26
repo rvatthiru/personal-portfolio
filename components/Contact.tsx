@@ -26,10 +26,10 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Let&apos;s Connect
           </h2>
-          <p className="text-gray-400 text-lg">Open to new opportunities and collaborations</p>
+          <p className="text-blue-200 text-lg">Open to new opportunities and collaborations</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -42,35 +42,38 @@ export default function Contact() {
             className="space-y-6"
           >
             <div>
-              <label className="block text-gray-300 mb-2">Name</label>
+              <label className="block text-blue-200 mb-2 font-medium">Name</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-gray-800/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all text-white placeholder-gray-400"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Your name"
               />
             </div>
             <div>
-              <label className="block text-gray-300 mb-2">Email</label>
+              <label className="block text-blue-200 mb-2 font-medium">Email</label>
               <input
                 type="email"
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-gray-800/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all text-white placeholder-gray-400"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="your.email@example.com"
               />
             </div>
             <div>
-              <label className="block text-gray-300 mb-2">Message</label>
+              <label className="block text-blue-200 mb-2 font-medium">Message</label>
               <textarea
                 rows={5}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-gray-400 transition-colors resize-none"
+                className="w-full px-4 py-3 bg-gray-800/50 border border-purple-500/30 rounded-lg focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all resize-none text-white placeholder-gray-400"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Tell me about your project or opportunity..."
               />
             </div>
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2"
+              className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 text-white shadow-lg shadow-blue-500/25"
             >
               Send Message <Send className="w-5 h-5" />
             </button>
@@ -83,29 +86,25 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
           >
-            <div className="bg-gray-800 rounded-2xl p-8 border border-gray-700">
-              <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
+            <div className="bg-gradient-to-br from-gray-800/50 to-purple-900/20 rounded-2xl p-8 border border-purple-500/30 backdrop-blur-sm">
+              <h3 className="text-2xl font-bold mb-6 text-white">Get in Touch</h3>
               <div className="space-y-4">
                 <a
                   href="mailto:rvatthiru@gmail.com"
-                  className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
+                  className="flex items-center gap-4 p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-lg hover:from-blue-600/30 hover:to-purple-600/30 transition-all border border-blue-500/20 hover:border-blue-400/40"
                 >
-                  <Mail className="w-6 h-6 text-gray-300" />
-                  <span className="text-gray-300">rvatthiru@gmail.com</span>
+                  <Mail className="w-6 h-6 text-blue-300" />
+                  <span className="text-blue-200">rvatthiru@gmail.com</span>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/thirunarayanan-raman"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
+                  className="flex items-center gap-4 p-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-lg hover:from-purple-600/30 hover:to-pink-600/30 transition-all border border-purple-500/20 hover:border-purple-400/40"
                 >
-                  <Linkedin className="w-6 h-6 text-gray-300" />
-                  <span className="text-gray-300">LinkedIn Profile</span>
+                  <Linkedin className="w-6 h-6 text-purple-300" />
+                  <span className="text-purple-200">LinkedIn Profile</span>
                 </a>
-                <div className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg">
-                  <span className="text-2xl">📞</span>
-                  <span className="text-gray-300">214-836-1561</span>
-                </div>
               </div>
             </div>
           </motion.div>
