@@ -34,7 +34,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
-                Over the past 4 years, I've evolved from building BI dashboards to developing predictive models 
+                Over the past 4 years, I&apos;ve evolved from building BI dashboards to developing predictive models 
                 that drive strategic decisions.
               </p>
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
