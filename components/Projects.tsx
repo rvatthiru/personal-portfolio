@@ -48,7 +48,7 @@ const projects = [
   },
   {
     title: 'Multi-Class Prediction of Cirrhosis Outcomes',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center',
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&crop=center',
     abstract: 'Developed an XGBoost model for liver cirrhosis patient data with 83% accuracy, deployed on Databricks using MLFlow to track the performance with scalable and automated pipelines for real-time analytics.',
     star: {
       situation: 'Healthcare providers needed accurate prediction models for cirrhosis outcomes.',
@@ -181,6 +181,10 @@ export default function Projects() {
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    // Fallback to a placeholder if image fails to load
+                    e.currentTarget.src = 'https://via.placeholder.com/400x300/374151/9ca3af?text=' + encodeURIComponent(project.title);
+                  }}
                 />
               </div>
               <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">{project.title}</h3>
