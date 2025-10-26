@@ -9,7 +9,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <section className="py-24 px-6 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900" id="about">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}

@@ -87,14 +87,14 @@ export default function Contact() {
               <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
               <div className="space-y-4">
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:rvatthiru@gmail.com"
                   className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
                 >
                   <Mail className="w-6 h-6 text-purple-400" />
-                  <span className="text-gray-300">your.email@example.com</span>
+                  <span className="text-gray-300">rvatthiru@gmail.com</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourprofile"
+                  href="https://www.linkedin.com/in/thirunarayanan-raman"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
@@ -102,15 +102,10 @@ export default function Contact() {
                   <Linkedin className="w-6 h-6 text-purple-400" />
                   <span className="text-gray-300">LinkedIn Profile</span>
                 </a>
-                <a
-                  href="https://github.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
-                >
-                  <Github className="w-6 h-6 text-purple-400" />
-                  <span className="text-gray-300">GitHub Profile</span>
-                </a>
+                <div className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg">
+                  <span className="text-2xl">📞</span>
+                  <span className="text-gray-300">214-836-1561</span>
+                </div>
               </div>
             </div>
           </motion.div>
