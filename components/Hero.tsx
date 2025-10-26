@@ -2,20 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
-import { useState, useEffect } from 'react';
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -43,41 +31,13 @@ export default function Hero() {
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 mb-4"
+            className="text-xl md:text-2xl text-gray-300 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Transforming data into decisions that drive impact
           </motion.p>
-          
-          <motion.p 
-            className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Data Analytics, Business Intelligence & Data Science Professional | 4 Years Experience
-          </motion.p>
-
-          <motion.div 
-            className="text-gray-300 mb-12 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            <p className="text-lg mb-2">214-836-1561 | rvatthiru@gmail.com</p>
-            <p className="text-lg">
-              <a 
-                href="https://www.linkedin.com/in/thirunarayanan-raman" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
-              >
-                www.linkedin.com/in/thirunarayanan-raman
-              </a>
-            </p>
-          </motion.div>
 
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
