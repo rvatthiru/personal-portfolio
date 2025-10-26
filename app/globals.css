@@ -5,15 +5,16 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --accent-blue: #3b82f6;
-  --accent-purple: #8b5cf6;
-  --accent-pink: #ec4899;
-  --accent-cyan: #06b6d4;
   --accent-emerald: #10b981;
-  --accent-orange: #f97316;
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --accent-teal: #14b8a6;
+  --accent-cyan: #06b6d4;
+  --accent-sky: #0ea5e9;
+  --accent-indigo: #6366f1;
+  --accent-violet: #8b5cf6;
+  --accent-fuchsia: #d946ef;
+  --gradient-primary: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+  --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+  --gradient-tertiary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
 }
 
 * {
@@ -42,10 +43,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
 }
