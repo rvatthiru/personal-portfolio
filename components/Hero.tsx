@@ -95,66 +95,11 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="relative w-full max-w-md h-80 bg-gray-800 rounded-2xl border border-gray-700 flex items-center justify-center overflow-hidden"
             >
-              {/* Animated Background Elements */}
-              <div className="absolute inset-0 overflow-hidden">
-                {/* Floating Data Elements */}
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-3 h-3 bg-gray-400 rounded-full opacity-30"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -20, 0],
-                      opacity: [0.3, 0.6, 0.3],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
-                ))}
-                
-                {/* Connecting Lines */}
-                <motion.div
-                  className="absolute inset-0"
-                  animate={{
-                    opacity: [0.1, 0.3, 0.1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
-                >
-                  <svg className="w-full h-full">
-                    <motion.line
-                      x1="20%"
-                      y1="30%"
-                      x2="80%"
-                      y2="70%"
-                      stroke="rgba(255,255,255,0.2)"
-                      strokeWidth="1"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <motion.line
-                      x1="80%"
-                      y1="30%"
-                      x2="20%"
-                      y2="70%"
-                      stroke="rgba(255,255,255,0.2)"
-                      strokeWidth="1"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                    />
-                  </svg>
-                </motion.div>
-              </div>
+                     {/* Minimalist Background */}
+                     <div className="absolute inset-0 overflow-hidden">
+                       {/* Subtle gradient overlay */}
+                       <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 to-gray-900/50" />
+                     </div>
 
               {/* Main Animation Text */}
               <motion.div
@@ -169,33 +114,63 @@ export default function Hero() {
                   {animations[currentAnimation]}
                 </div>
                 
-                {/* Animated Icons based on current message */}
-                <div className="text-6xl mb-4">
-                  {currentAnimation === 0 && (
-                    <motion.div
-                      animate={{ rotate: [0, 10, -10, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      ⚙️
-                    </motion.div>
-                  )}
-                  {currentAnimation === 1 && (
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      📊
-                    </motion.div>
-                  )}
-                  {currentAnimation === 2 && (
-                    <motion.div
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      🎯
-                    </motion.div>
-                  )}
-                </div>
+                       {/* Minimalist Animated Icons */}
+                       <div className="flex justify-center mb-4">
+                         {currentAnimation === 0 && (
+                           <motion.div
+                             className="w-16 h-16 bg-gray-600 rounded-full flex items-center justify-center"
+                             animate={{ 
+                               scale: [1, 1.05, 1],
+                               rotate: [0, 2, -2, 0]
+                             }}
+                             transition={{ 
+                               duration: 3, 
+                               repeat: Infinity,
+                               ease: "easeInOut"
+                             }}
+                           >
+                             <svg className="w-8 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                               <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
+                             </svg>
+                           </motion.div>
+                         )}
+                         {currentAnimation === 1 && (
+                           <motion.div
+                             className="w-16 h-16 bg-gray-600 rounded-full flex items-center justify-center"
+                             animate={{ 
+                               scale: [1, 1.05, 1],
+                               opacity: [0.8, 1, 0.8]
+                             }}
+                             transition={{ 
+                               duration: 3, 
+                               repeat: Infinity,
+                               ease: "easeInOut"
+                             }}
+                           >
+                             <svg className="w-8 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                               <path d="M3 13H11V3H3V13ZM3 21H11V15H3V21ZM13 21H21V11H13V21ZM13 3V9H21V3H13Z"/>
+                             </svg>
+                           </motion.div>
+                         )}
+                         {currentAnimation === 2 && (
+                           <motion.div
+                             className="w-16 h-16 bg-gray-600 rounded-full flex items-center justify-center"
+                             animate={{ 
+                               scale: [1, 1.05, 1],
+                               y: [0, -2, 0]
+                             }}
+                             transition={{ 
+                               duration: 3, 
+                               repeat: Infinity,
+                               ease: "easeInOut"
+                             }}
+                           >
+                             <svg className="w-8 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                               <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20ZM12 6C9.79 6 8 7.79 8 10S9.79 14 12 14 16 12.21 16 10 14.21 6 12 6ZM12 12C10.9 12 10 11.1 10 10S10.9 8 12 8 14 8.9 14 10 13.1 12 12 12Z"/>
+                             </svg>
+                           </motion.div>
+                         )}
+                       </div>
               </motion.div>
             </motion.div>
           </div>
