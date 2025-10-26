@@ -5,6 +5,19 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { X } from 'lucide-react';
 
+interface Project {
+  title: string;
+  abstract: string;
+  star: {
+    situation: string;
+    task: string;
+    action: string;
+    result: string;
+  };
+  impact: string;
+  tools: string[];
+}
+
 const projects = [
   {
     title: 'COSMO.ai – Conversational AI Chatbot',
@@ -47,9 +60,9 @@ const projects = [
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const openModal = (project) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
   };
 
