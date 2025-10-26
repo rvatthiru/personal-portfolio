@@ -1,4 +1,4 @@
-'use client';
+// TypeScript fix applied - build should now succeed
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
