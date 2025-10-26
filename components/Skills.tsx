@@ -40,26 +40,24 @@ export default function Skills() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Skills & Expertise
           </h2>
-          <p className="text-gray-400 text-lg">Technical skills across the data stack</p>
+          <p className="text-gray-300 text-lg">Technical skills across the data stack</p>
         </motion.div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
-              animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ 
-                duration: 0.8, 
-                delay: index * 0.15,
-                type: "spring",
-                stiffness: 100,
-                damping: 15
+                duration: 0.5, 
+                delay: index * 0.1,
+                ease: "easeOut"
               }}
-              className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300"
+              className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300 hover:scale-105"
             >
               <h3 className="text-2xl font-bold mb-4">{category.name}</h3>
               <div className="space-y-3 mb-6">
@@ -74,7 +72,7 @@ export default function Skills() {
                         className="bg-gradient-to-r from-gray-600 to-gray-400 h-2 rounded-full"
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${category.level * 10}%` } : {}}
-                        transition={{ duration: 1, delay: index * 0.2 + 0.3 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 + 0.2, ease: "easeOut" }}
                       />
                     </div>
                   </div>
