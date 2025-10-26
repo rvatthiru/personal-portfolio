@@ -6,29 +6,24 @@ import { useRef } from 'react';
 
 const skillCategories = [
   {
-    name: 'Certifications',
-    skills: ['Microsoft Data Analyst Associate'],
-    level: 100
-  },
-  {
     name: 'Tools & Platforms',
     skills: ['Power BI', 'Power Apps', 'Power Automate', 'Excel', 'ClickHouse', 'DBT', 'Airbyte'],
-    level: 95
+    level: 9
   },
   {
     name: 'Programming Languages',
     skills: ['SQL (MySQL, HiveQL)', 'Python', 'R'],
-    level: 90
+    level: 9
   },
   {
     name: 'Data & Cloud',
     skills: ['Azure', 'Hadoop', 'MongoDB', 'Databricks'],
-    level: 85
+    level: 8
   },
   {
     name: 'AI/ML & Analytics',
     skills: ['Machine Learning', 'Deep Learning', 'Feature Engineering', 'Fine Tuning', 'GenAI', 'LLMs'],
-    level: 88
+    level: 8
   }
 ];
 
@@ -51,7 +46,7 @@ export default function Skills() {
           <p className="text-gray-400 text-lg">Technical skills across the data stack</p>
         </motion.div>
 
-        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
@@ -72,13 +67,13 @@ export default function Skills() {
                   <div key={i}>
                     <div className="flex justify-between mb-2">
                       <span className="text-gray-300">{skill}</span>
-                      <span className="text-gray-300">{category.level}%</span>
+                      <span className="text-gray-300">{category.level}/10</span>
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <motion.div
                         className="bg-gradient-to-r from-gray-600 to-gray-400 h-2 rounded-full"
                         initial={{ width: 0 }}
-                        animate={isInView ? { width: `${category.level}%` } : {}}
+                        animate={isInView ? { width: `${category.level * 10}%` } : {}}
                         transition={{ duration: 1, delay: index * 0.2 + 0.3 }}
                       />
                     </div>
