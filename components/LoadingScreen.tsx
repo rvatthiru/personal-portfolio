@@ -6,12 +6,16 @@ import { useEffect, useState } from 'react';
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [isClient, setIsClient] = useState(false);
+  const [showDisintegration, setShowDisintegration] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+      setShowDisintegration(true);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -21,46 +25,68 @@ export default function LoadingScreen() {
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ duration: 0.5, delay: 1.5 }}
-      className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+      animate={{ 
+        opacity: showDisintegration ? 0 : 1,
+        scale: showDisintegration ? 0.8 : 1,
+      }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden"
     >
-      <div className="text-center">
-        {/* Animated Logo */}
+      {/* Film opening disintegration effect */}
+      {showDisintegration && (
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute bg-white"
+              style={{
+                width: '5%',
+                height: '5%',
+                left: `${(i % 5) * 20}%`,
+                top: `${Math.floor(i / 5) * 20}%`,
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ 
+                opacity: [0, 1, 0],
+                scale: [1, 1.2, 0],
+                rotate: [0, 180, 360],
+              }}
+              transition={{
+                duration: 0.8,
+                delay: i * 0.05,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      <div className="text-center relative z-10">
+        {/* Welcome Message */}
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 1, type: "spring", bounce: 0.4 }}
           className="mb-8"
         >
-          <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-200 bg-clip-text text-transparent">
-            TR
+          <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-200 bg-clip-text text-transparent mb-4">
+            Hello there 👋
           </div>
         </motion.div>
 
-        {/* Loading Text */}
+        {/* Welcome Text */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-xl text-gray-300 mb-8"
         >
-          Thirunarayanan Raman
+          Welcome to my portfolio
         </motion.div>
-
-        {/* Animated Loading Bar */}
-        <div className="w-64 h-1 bg-gray-800 rounded-full mx-auto overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-            className="h-full bg-gradient-to-r from-gray-600 via-gray-400 to-gray-200 rounded-full"
-          />
-        </div>
 
         {/* Floating Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
               initial={{ 

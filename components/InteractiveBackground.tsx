@@ -71,13 +71,14 @@ export default function InteractiveBackground() {
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -20, 0],
-              opacity: [0.2, 0.4, 0.2],
+              y: [0, -15, 0],
+              opacity: [0.15, 0.3, 0.15],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 8 + Math.random() * 4,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: Math.random() * 3,
+              ease: "easeInOut",
             }}
           />
         ))}
@@ -95,27 +96,6 @@ export default function InteractiveBackground() {
         }}
       />
 
-      {/* Animated lines */}
-      <div className="absolute inset-0">
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent opacity-30"
-            style={{
-              width: '100%',
-              top: `${30 + i * 30}%`,
-            }}
-            animate={{
-              scaleX: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4 + i,
-              repeat: Infinity,
-              delay: i * 1.5,
-            }}
-          />
-        ))}
-      </div>
     </div>
   );
 }
