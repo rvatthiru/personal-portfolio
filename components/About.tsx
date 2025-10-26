@@ -58,9 +58,15 @@ export default function About() {
               className="relative"
             >
               <img 
-                src="https://drive.google.com/uc?export=view&id=18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII"
+                src="https://lh3.googleusercontent.com/d/18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII"
                 alt="Thirunarayanan Raman"
-                className="w-full h-auto rounded-3xl object-cover"
+                className="w-full h-auto rounded-3xl object-cover shadow-lg"
+                style={{ minHeight: '400px', maxHeight: '600px' }}
+                onError={(e) => {
+                  console.log('Image failed to load, trying fallback');
+                  e.currentTarget.src = 'https://drive.google.com/uc?export=view&id=18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII';
+                }}
+                onLoad={() => console.log('Image loaded successfully')}
               />
             </motion.div>
           </div>
