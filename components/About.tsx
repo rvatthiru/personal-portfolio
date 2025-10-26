@@ -6,7 +6,7 @@ import { useRef } from 'react';
 
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   return (
     <section className="py-24 px-6 bg-transparent relative" id="about">

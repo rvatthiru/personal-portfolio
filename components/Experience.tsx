@@ -83,7 +83,7 @@ const experiences: Experience[] = [
 
 export default function Experience() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
   const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
 
   const openModal = (experience: Experience) => {
