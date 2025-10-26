@@ -63,7 +63,8 @@ export default function Hero() {
                        animate={{ opacity: 1, y: 0 }}
                        transition={{ duration: 0.8, delay: 0.4 }}
                      >
-                       Transforming data into decisions that drive impact
+                       A data storyteller who turns complexity into clarity.<br />
+                       I design analytics, dashboards, and predictive systems that empower real business decisions across marketing, finance, and operations.
                      </motion.p>
 
               <motion.div 
