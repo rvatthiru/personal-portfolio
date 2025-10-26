@@ -20,7 +20,7 @@ export default function About() {
         >
           <div>
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -33,17 +33,17 @@ export default function About() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-cyan-200 text-lg mb-4 leading-relaxed">
+              <p className="text-gray-300 text-lg mb-4 leading-relaxed">
                 I&apos;m currently pursuing my M.S. in Business Analytics and Artificial Intelligence (STEM) 
                 at The University of Texas at Dallas with a GPA of 3.97, specializing in Advanced Statistics, 
                 Predictive Analytics, Machine Learning, and Deep Learning.
               </p>
-              <p className="text-cyan-200 text-lg mb-4 leading-relaxed">
+              <p className="text-gray-300 text-lg mb-4 leading-relaxed">
                 With 4+ years of experience in data analytics and business intelligence, I&apos;ve built 
                 analytics pipelines, automated processes, and developed predictive models that have 
                 driven significant business impact across multiple industries.
               </p>
-              <p className="text-cyan-200 text-lg leading-relaxed">
+              <p className="text-gray-300 text-lg leading-relaxed">
                 My expertise spans from building Power BI dashboards and ETL pipelines to developing 
                 machine learning models with 96% accuracy, always focused on delivering actionable 
                 insights that drive strategic decisions.

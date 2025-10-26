@@ -41,7 +41,7 @@ export default function Hero() {
               transition={{ duration: 0.8 }}
             >
                      <motion.h1 
-                       className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 bg-clip-text text-transparent"
+                       className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
                        initial={{ opacity: 0, scale: 0.9 }}
                        animate={{ opacity: 1, scale: 1 }}
                        transition={{ duration: 0.8, delay: 0.2 }}
@@ -50,7 +50,7 @@ export default function Hero() {
                      </motion.h1>
               
                      <motion.p 
-                       className="text-xl md:text-2xl text-cyan-200 mb-12"
+                       className="text-xl md:text-2xl text-gray-300 mb-12"
                        initial={{ opacity: 0, y: 20 }}
                        animate={{ opacity: 1, y: 0 }}
                        transition={{ duration: 0.8, delay: 0.4 }}
@@ -66,7 +66,7 @@ export default function Hero() {
               >
                        <button
                          onClick={scrollToProjects}
-                         className="group relative px-8 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300 shadow-lg shadow-emerald-500/25"
+                         className="group relative px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300 shadow-lg shadow-gray-500/25"
                        >
                          <span className="relative z-10 flex items-center gap-2 text-white">
                            View Projects
@@ -76,7 +76,7 @@ export default function Hero() {
 
                        <button
                          onClick={scrollToContact}
-                         className="group px-8 py-4 border-2 border-indigo-400 rounded-full font-semibold hover:bg-indigo-400 hover:bg-opacity-10 transition-all duration-300 flex items-center gap-2 text-indigo-300 hover:text-indigo-200"
+                         className="group px-8 py-4 border-2 border-gray-400 rounded-full font-semibold hover:bg-gray-400 hover:bg-opacity-10 transition-all duration-300 flex items-center gap-2 text-gray-300 hover:text-gray-200"
                        >
                          <Mail className="w-5 h-5" />
                          Contact Me
