@@ -53,7 +53,7 @@ export default function About() {
                 src="https://lh3.googleusercontent.com/d/18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII"
                 alt="Thirunarayanan Raman"
                 className="w-full h-auto rounded-3xl object-contain shadow-lg"
-                style={{ minHeight: '250px', maxHeight: '350px' }}
+                style={{ minHeight: '350px', maxHeight: '500px' }}
                 onError={(e) => {
                   console.log('Image failed to load, trying fallback');
                   e.currentTarget.src = 'https://drive.google.com/uc?export=view&id=18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII';
