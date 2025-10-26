@@ -22,7 +22,7 @@ interface Project {
 const projects = [
   {
     title: 'COSMO.ai – Conversational AI Chatbot',
-    image: '🤖',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=center',
     abstract: 'Built a context-aware AI chatbot using Mistral AI, LlamaIndex, Jina embeddings, FastAPI, MongoDB, and Qdrant to deliver accurate (87%), consistent responses to student queries on compliance, programs, and policies.',
     star: {
       situation: 'Manual handling of student queries led to inconsistent responses and delays.',
@@ -35,7 +35,7 @@ const projects = [
   },
   {
     title: 'SMART Inventory Optimization Model',
-    image: '📦',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&crop=center',
     abstract: 'Built a SARIMAX and polynomial regression-based demand forecasting model (20% improved accuracy) and applied EOQ optimization techniques to reduce excess inventory by 7.5%, enhancing procurement and working capital efficiency.',
     star: {
       situation: 'Excess inventory and inaccurate demand forecasting increased carrying costs.',
@@ -48,7 +48,7 @@ const projects = [
   },
   {
     title: 'Multi-Class Prediction of Cirrhosis Outcomes',
-    image: '🏥',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center',
     abstract: 'Developed an XGBoost model for liver cirrhosis patient data with 83% accuracy, deployed on Databricks using MLFlow to track the performance with scalable and automated pipelines for real-time analytics.',
     star: {
       situation: 'Healthcare providers needed accurate prediction models for cirrhosis outcomes.',
@@ -78,19 +78,39 @@ export default function Projects() {
   useEffect(() => {
     const handleSectionNavigation = () => {
       if (selectedProject) {
-        // Check if user has scrolled to a different section
-        const sections = ['home', 'about', 'skills', 'projects', 'contact'];
-        const currentSection = sections.find(section => {
-          const element = document.getElementById(section);
+        // Get all section elements
+        const sections = [
+          { id: 'home', element: document.getElementById('home') },
+          { id: 'about', element: document.getElementById('about') },
+          { id: 'skills', element: document.getElementById('skills') },
+          { id: 'projects', element: document.getElementById('projects') },
+          { id: 'contact', element: document.getElementById('contact') }
+        ];
+
+        // Find which section is currently most visible
+        let currentSection = 'projects';
+        let maxVisibility = 0;
+
+        sections.forEach(({ id, element }) => {
           if (element) {
             const rect = element.getBoundingClientRect();
-            return rect.top <= 100 && rect.bottom >= 100;
+            const windowHeight = window.innerHeight;
+            
+            // Calculate how much of the section is visible
+            const visibleTop = Math.max(0, rect.top);
+            const visibleBottom = Math.min(windowHeight, rect.bottom);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+            const visibilityRatio = visibleHeight / Math.min(rect.height, windowHeight);
+            
+            if (visibilityRatio > maxVisibility) {
+              maxVisibility = visibilityRatio;
+              currentSection = id;
+            }
           }
-          return false;
         });
         
         // If user is not in projects section, close modal
-        if (currentSection && currentSection !== 'projects') {
+        if (currentSection !== 'projects') {
           closeModal();
         }
       }
@@ -101,7 +121,7 @@ export default function Projects() {
       let timeoutId: NodeJS.Timeout;
       const debouncedHandler = () => {
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(handleSectionNavigation, 150);
+        timeoutId = setTimeout(handleSectionNavigation, 200);
       };
 
       window.addEventListener('scroll', debouncedHandler);
@@ -143,7 +163,13 @@ export default function Projects() {
               className="group bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300 hover:scale-105 cursor-pointer"
               onClick={() => openModal(project)}
             >
-              <div className="text-6xl mb-4">{project.image}</div>
+              <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
               <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">{project.title}</h3>
               <p className="text-gray-300 group-hover:text-gray-200 transition-colors">{project.abstract}</p>
             </motion.div>
