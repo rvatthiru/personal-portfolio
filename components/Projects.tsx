@@ -76,9 +76,6 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              <button className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
-                View Details <ExternalLink className="w-4 h-4" />
-              </button>
             </motion.div>
           ))}
         </div>
