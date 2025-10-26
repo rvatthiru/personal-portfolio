@@ -139,7 +139,7 @@ export default function Hero() {
                        <div className="mb-6">
                          {currentAnimation === 0 && (
                            <motion.img
-                             src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif"
+                             src="https://camo.githubusercontent.com/2366b34bb903c09617990fb5fff4622f3e941349e846ddb7e73df872a9d21233/68747470733a2f2f63646e2e6472696262626c652e636f6d2f75736572732f3733303730332f73637265656e73686f74732f363538313234332f6176656e746f2e676966"
                              alt="Data Pipeline Animation"
                              className="w-80 h-80 object-contain"
                              onError={(e) => {
@@ -157,7 +157,7 @@ export default function Hero() {
                          )}
                          {currentAnimation === 1 && (
                            <motion.img
-                             src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
+                             src="https://cdn.dribbble.com/userupload/23506760/file/original-c98eae4c7d7385f0c5fa1780bfd25ed5.gif"
                              alt="Data Analytics Animation"
                              className="w-80 h-80 object-contain"
                              onError={(e) => {
@@ -175,7 +175,7 @@ export default function Hero() {
                          )}
                          {currentAnimation === 2 && (
                            <motion.img
-                             src="https://media.giphy.com/media/3o7TKSjRrfIPjeiVy/giphy.gif"
+                             src="https://i.brecorder.com/primary/2024/06/08125154377ed6a.gif"
                              alt="Business Strategy Animation"
                              className="w-80 h-80 object-contain"
                              onError={(e) => {
