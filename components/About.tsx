@@ -60,7 +60,7 @@ export default function About() {
               <img 
                 src="https://lh3.googleusercontent.com/d/18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII"
                 alt="Thirunarayanan Raman"
-                className="w-full h-auto rounded-3xl object-cover shadow-lg"
+                className="w-full h-auto rounded-3xl object-contain shadow-lg bg-gray-100"
                 style={{ minHeight: '300px', maxHeight: '400px' }}
                 onError={(e) => {
                   console.log('Image failed to load, trying fallback');
