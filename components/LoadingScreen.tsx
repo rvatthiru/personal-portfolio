@@ -10,14 +10,24 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Disable scrolling
+    document.body.style.overflow = 'hidden';
+    
     const timer = setTimeout(() => {
       setShowDisintegration(true);
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
+        // Re-enable scrolling
+        document.body.style.overflow = 'unset';
+      }, 200); // 200ms delay after disintegration
     }, 1500);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      // Cleanup: re-enable scrolling if component unmounts
+      document.body.style.overflow = 'unset';
+    };
   }, []);
 
   if (!isLoading || !isClient) return null;
@@ -32,28 +42,28 @@ export default function LoadingScreen() {
       transition={{ duration: 1, ease: "easeInOut" }}
       className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden"
     >
-      {/* Film opening disintegration effect */}
+      {/* Film opening disintegration effect - small dots */}
       {showDisintegration && (
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(100)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute bg-white"
+              className="absolute bg-white rounded-full"
               style={{
-                width: '5%',
-                height: '5%',
-                left: `${(i % 5) * 20}%`,
-                top: `${Math.floor(i / 5) * 20}%`,
+                width: '4px',
+                height: '4px',
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
               }}
               initial={{ opacity: 0 }}
               animate={{ 
                 opacity: [0, 1, 0],
-                scale: [1, 1.2, 0],
-                rotate: [0, 180, 360],
+                scale: [1, 1.5, 0],
+                y: [0, -20, -40],
               }}
               transition={{
-                duration: 0.8,
-                delay: i * 0.05,
+                duration: 1.2,
+                delay: Math.random() * 0.5,
                 ease: "easeInOut",
               }}
             />
