@@ -66,7 +66,7 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 bg-gray-900" id="experience">
+    <section className="py-24 px-6 bg-transparent relative" id="experience">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

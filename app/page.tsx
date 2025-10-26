@@ -9,13 +9,15 @@ import Impact from '@/components/Impact';
 import Contact from '@/components/Contact';
 import Navbar from '@/components/Navbar';
 import LoadingScreen from '@/components/LoadingScreen';
+import InteractiveBackground from '@/components/InteractiveBackground';
 
 export default function Home() {
   return (
     <>
       <LoadingScreen />
+      <InteractiveBackground />
       <Navbar />
-      <main className="min-h-screen">
+      <main className="relative z-10 min-h-screen">
         <Hero />
         <About />
         <Experience />

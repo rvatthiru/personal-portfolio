@@ -25,17 +25,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black" id="home">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div 
-          className="absolute w-96 h-96 rounded-full blur-3xl opacity-30 bg-gradient-to-r from-gray-600 via-gray-400 to-gray-200"
-          style={{
-            transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`,
-            transition: 'transform 0.3s ease-out'
-          }}
-        />
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent" id="home">
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
