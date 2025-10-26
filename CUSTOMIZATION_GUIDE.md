@@ -167,3 +167,4 @@ After customizing content:
 - Proofread for typos and grammar
 
 Good luck with your portfolio! 🎉
+

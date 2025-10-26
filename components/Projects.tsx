@@ -7,22 +7,25 @@ import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Predictive Pricing Model',
-    description: 'Developed predictive pricing model with 85% accuracy using ensemble learning',
-    tags: ['Python', 'Machine Learning', 'Scikit-learn'],
-    image: '🔬'
+    title: 'COSMO.ai – Conversational AI Chatbot',
+    description: 'Built a context-aware AI chatbot using Mistral AI, LlamaIndex, Jina embeddings, FastAPI, MongoDB, and Qdrant to deliver accurate (87%), consistent responses to student queries on compliance, programs, and policies.',
+    tags: ['Mistral AI', 'LlamaIndex', 'FastAPI', 'MongoDB', 'Qdrant'],
+    image: '🤖',
+    period: 'Feb 2025 – Apr 2025'
   },
   {
-    title: 'Sales Analytics Dashboard',
-    description: 'Built interactive Power BI dashboard improving decision speed by 40%',
-    tags: ['Power BI', 'SQL', 'Data Visualization'],
-    image: '📊'
+    title: 'SMART Inventory Optimization Model',
+    description: 'Built a SARIMAX and polynomial regression-based demand forecasting model (20% improved accuracy) and applied EOQ optimization techniques to reduce excess inventory by 7.5%, enhancing procurement and working capital efficiency.',
+    tags: ['SARIMAX', 'Polynomial Regression', 'EOQ', 'Python', 'Forecasting'],
+    image: '📦',
+    period: 'Sep 2024 – Oct 2024'
   },
   {
-    title: 'ETL Data Pipeline',
-    description: 'Automated data pipeline processing 100M+ rows daily using Airbyte',
-    tags: ['Airbyte', 'Python', 'ETL'],
-    image: '⚙️'
+    title: 'Multi-Class Prediction of Cirrhosis Outcomes',
+    description: 'Developed an XGBoost model for liver cirrhosis patient data with 83% accuracy, deployed on Databricks using MLFlow to track the performance with scalable and automated pipelines for real-time analytics.',
+    tags: ['XGBoost', 'Databricks', 'MLFlow', 'Python', 'Healthcare'],
+    image: '🏥',
+    period: 'Mar 2024 – Apr 2024'
   }
 ];
 
@@ -55,7 +58,10 @@ export default function Projects() {
               className="group bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-purple-500 transition-all duration-300 hover:scale-105"
             >
               <div className="text-6xl mb-4">{project.image}</div>
-              <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="text-2xl font-bold">{project.title}</h3>
+                <span className="text-sm text-gray-500 bg-gray-700 px-2 py-1 rounded">{project.period}</span>
+              </div>
               <p className="text-gray-300 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag, i) => (
@@ -74,3 +80,4 @@ export default function Projects() {
     </section>
   );
 }
+

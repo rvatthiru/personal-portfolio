@@ -123,3 +123,4 @@ For questions or feedback, please reach out through the contact form on the webs
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
+

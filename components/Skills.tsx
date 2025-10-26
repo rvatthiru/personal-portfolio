@@ -6,24 +6,29 @@ import { useRef } from 'react';
 
 const skillCategories = [
   {
-    name: 'Programming',
-    skills: ['Python', 'SQL', 'R', 'JavaScript'],
-    level: 90
+    name: 'Certifications',
+    skills: ['Microsoft Data Analyst Associate'],
+    level: 100
   },
   {
-    name: 'BI Tools',
-    skills: ['Power BI', 'Tableau', 'Qlik Sense'],
+    name: 'Tools & Platforms',
+    skills: ['Power BI', 'Power Apps', 'Power Automate', 'Excel', 'ClickHouse', 'DBT', 'Airbyte'],
     level: 95
   },
   {
-    name: 'Databases',
-    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Snowflake'],
+    name: 'Programming Languages',
+    skills: ['SQL (MySQL, HiveQL)', 'Python', 'R'],
+    level: 90
+  },
+  {
+    name: 'Data & Cloud',
+    skills: ['Azure', 'Hadoop', 'MongoDB', 'Databricks'],
     level: 85
   },
   {
-    name: 'ETL & Cloud',
-    skills: ['Airbyte', 'AWS', 'Azure', 'Docker'],
-    level: 80
+    name: 'AI/ML & Analytics',
+    skills: ['Machine Learning', 'Deep Learning', 'Feature Engineering', 'Fine Tuning', 'GenAI', 'LLMs'],
+    level: 88
   }
 ];
 
@@ -46,7 +51,7 @@ export default function Skills() {
           <p className="text-gray-400 text-lg">Technical skills across the data stack</p>
         </motion.div>
 
-        <div ref={ref} className="grid md:grid-cols-2 gap-8">
+        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
@@ -81,3 +86,4 @@ export default function Skills() {
     </section>
   );
 }
+

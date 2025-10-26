@@ -25,7 +25,7 @@ export default function About() {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              My Journey
+              About Me
             </motion.h2>
             
             <motion.div
@@ -34,16 +34,19 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
-                Over the past 4 years, I&apos;ve evolved from building BI dashboards to developing predictive models 
-                that drive strategic decisions.
+                I&apos;m currently pursuing my M.S. in Business Analytics and Artificial Intelligence (STEM) 
+                at The University of Texas at Dallas with a GPA of 3.97, specializing in Advanced Statistics, 
+                Predictive Analytics, Machine Learning, and Deep Learning.
               </p>
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
-                Starting in Business Intelligence, I mastered data visualization and ETL processes, building 
-                over 25 interactive dashboards that empowered stakeholders with real-time insights.
+                With 4+ years of experience in data analytics and business intelligence, I&apos;ve built 
+                analytics pipelines, automated processes, and developed predictive models that have 
+                driven significant business impact across multiple industries.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                My transition to Data Science allowed me to leverage machine learning and statistical modeling, 
-                achieving 85%+ accuracy in predictive analytics projects that directly impacted business outcomes.
+                My expertise spans from building Power BI dashboards and ETL pipelines to developing 
+                machine learning models with 96% accuracy, always focused on delivering actionable 
+                insights that drive strategic decisions.
               </p>
             </motion.div>
           </div>
@@ -62,31 +65,31 @@ export default function About() {
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">📊</span>
+                      <span className="text-2xl">🎓</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Data Analytics</h3>
-                      <p className="text-gray-400">Expertise in SQL, Power BI, and data visualization</p>
+                      <h3 className="text-xl font-semibold mb-2">Education</h3>
+                      <p className="text-gray-400">M.S. Business Analytics & AI, UT Dallas (GPA: 3.97)</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">🤖</span>
+                      <span className="text-2xl">🏆</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Machine Learning</h3>
-                      <p className="text-gray-400">Python, scikit-learn, and predictive modeling</p>
+                      <h3 className="text-xl font-semibold mb-2">Certifications</h3>
+                      <p className="text-gray-400">Microsoft Data Analyst Associate</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-pink-600 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">☁️</span>
+                      <span className="text-2xl">⚡</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Cloud & ETL</h3>
-                      <p className="text-gray-400">Airbyte, data pipelines, and cloud infrastructure</p>
+                      <h3 className="text-xl font-semibold mb-2">Impact</h3>
+                      <p className="text-gray-400">40% reduction in SLA breaches, $2.5M+ savings</p>
                     </div>
                   </div>
                 </div>

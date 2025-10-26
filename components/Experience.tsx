@@ -7,30 +7,56 @@ import { Briefcase } from 'lucide-react';
 
 const experiences = [
   {
-    role: 'Data Scientist',
-    company: 'Your Company',
-    period: '2023 - Present',
+    role: 'Associate Data Analyst',
+    company: 'Vibrant America',
+    period: 'Aug 2025 – Present',
+    location: 'San Jose, CA',
     achievements: [
-      'Developed predictive pricing models with 85% accuracy using ensemble learning techniques',
-      'Built automated data pipelines processing 100M+ rows daily'
+      'Built an analytics pipeline (Airbyte → ClickHouse → DBT), improving data reliability and reducing reporting effort by 40%',
+      'Engineered a Power BI dashboard on turnaround times and workloads, cutting SLA breaches by 20% through automated email alerts'
     ]
   },
   {
-    role: 'Senior Data Analyst',
-    company: 'Your Company',
-    period: '2021 - 2023',
+    role: 'Business Intelligence Intern',
+    company: 'Federal Home Loan Bank of Dallas',
+    period: 'Jan 2025 – May 2025',
+    location: 'Irving, TX',
     achievements: [
-      'Created 15+ interactive dashboards in Power BI, improving decision-making speed by 40%',
-      'Designed and implemented ETL processes using SQL and Airbyte'
+      'Automated the fund request process using Power Apps + Power Automate + MS SQL, reducing manual entry by 60% and accelerating SLA-compliant disbursements',
+      'Developed a Power BI dashboard to identify slow SQL queries and optimise indexing and joins, cutting execution time by 30% and boosting system responsiveness',
+      'Built an app using Power Platform to evaluate loan eligibility using Azure Document Intelligence and Python, and real-time dashboard updates, reducing processing delays by 40%'
+    ]
+  },
+  {
+    role: 'Data Science Intern',
+    company: 'UST',
+    period: 'May 2024 – Aug 2024',
+    location: 'Aliso Viejo, CA',
+    achievements: [
+      'Analyzed sales trends and developed a forecasting model (Prophet; RMSE: 2.68), enabling FY25 budget optimization',
+      'Deployed XGBoost models for customer segmentation and CLV prediction with 96% accuracy, enabling marketing to identify high-value segments, optimise targeting, and boost retention campaigns'
+    ]
+  },
+  {
+    role: 'Associate Analyst',
+    company: 'Newell Brands',
+    period: 'Apr 2022 – Jul 2023',
+    location: 'India',
+    achievements: [
+      'Developed a Power BI + Power Apps workflow to rationalize 100+ suppliers, saving $2.5M in procurement through tail-spend reduction',
+      'Built ETL pipelines with SQL and Python to create feature-ready datasets for ad-hoc dashboards, cutting prep time by 30% and enabling procurement insights',
+      'Streamlined supplier request process by integrating Power Platform with automated email updates to track request status, cutting submission time by 50%'
     ]
   },
   {
     role: 'Data Analyst',
-    company: 'Your Company',
-    period: '2020 - 2021',
+    company: 'Cognizant Technology Solutions',
+    period: 'Aug 2020 – Apr 2022',
+    location: 'India',
     achievements: [
-      'Built 10+ business intelligence dashboards for cross-functional teams',
-      'Performed ad-hoc data analysis using SQL and Python'
+      'Created a Power BI dashboard using DAX and M-Query to track energy delivery and pricing, revealing 12% higher churn in undercut regions and guiding pricing strategy adjustments',
+      'Published a real-time Power BI dashboard on ServiceNow data, alerting high-priority SLA-risk tickets and sending automated emails via Power Automate, cutting breaches by 40%',
+      'Automated data extraction and transformation from Hadoop using HiveQL scripts, reducing manual prep by 20%, and built Power BI dashboards to deliver high-level business insights across energy operations'
     ]
   }
 ];
@@ -82,7 +108,8 @@ export default function Experience() {
                       <span className="text-purple-400 font-semibold">{exp.period}</span>
                     </div>
                     <h3 className="text-2xl font-bold mb-2">{exp.role}</h3>
-                    <p className="text-gray-400 mb-4">{exp.company}</p>
+                    <p className="text-gray-400 mb-1">{exp.company}</p>
+                    <p className="text-gray-500 text-sm mb-4">{exp.location}</p>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, i) => (
                         <li key={i} className="text-gray-300 flex items-start gap-2">
@@ -101,3 +128,4 @@ export default function Experience() {
     </section>
   );
 }
+
