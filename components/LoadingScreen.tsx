@@ -20,7 +20,7 @@ export default function LoadingScreen() {
         setIsLoading(false);
         // Re-enable scrolling
         document.body.style.overflow = 'unset';
-      }, 200); // 200ms delay after disintegration
+      }, 800); // Increased delay to see disintegration effect
     }, 1500);
 
     return () => {
@@ -37,34 +37,35 @@ export default function LoadingScreen() {
       initial={{ opacity: 1 }}
       animate={{ 
         opacity: showDisintegration ? 0 : 1,
-        scale: showDisintegration ? 0.8 : 1,
+        scale: showDisintegration ? 0.9 : 1,
       }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
       className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden"
     >
-      {/* Film opening disintegration effect - small dots */}
+      {/* Enhanced disintegration effect - more visible dots */}
       {showDisintegration && (
         <div className="absolute inset-0">
-          {[...Array(100)].map((_, i) => (
+          {[...Array(150)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute bg-white rounded-full"
               style={{
-                width: '4px',
-                height: '4px',
+                width: '6px',
+                height: '6px',
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 0, scale: 0 }}
               animate={{ 
-                opacity: [0, 1, 0],
-                scale: [1, 1.5, 0],
-                y: [0, -20, -40],
+                opacity: [0, 1, 0.8, 0],
+                scale: [0, 1, 1.2, 0],
+                y: [0, -30, -60, -100],
+                x: [0, (Math.random() - 0.5) * 50, (Math.random() - 0.5) * 100],
               }}
               transition={{
-                duration: 1.2,
-                delay: Math.random() * 0.5,
-                ease: "easeInOut",
+                duration: 2,
+                delay: Math.random() * 0.8,
+                ease: "easeOut",
               }}
             />
           ))}
@@ -72,10 +73,14 @@ export default function LoadingScreen() {
       )}
 
       <div className="text-center relative z-10">
-        {/* Welcome Message */}
+        {/* Welcome Message with disintegration effect */}
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
+          animate={{ 
+            scale: showDisintegration ? 0.8 : 1, 
+            rotate: showDisintegration ? 5 : 0,
+            opacity: showDisintegration ? 0.3 : 1
+          }}
           transition={{ duration: 1, type: "spring", bounce: 0.4 }}
           className="mb-8"
         >
@@ -84,7 +89,10 @@ export default function LoadingScreen() {
           </div>
           <motion.div
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+            animate={{ 
+              scale: showDisintegration ? 0.8 : 1,
+              opacity: showDisintegration ? 0.3 : 1
+            }}
             transition={{ duration: 0.5, delay: 0.8 }}
             className="text-6xl md:text-8xl"
           >
@@ -92,10 +100,14 @@ export default function LoadingScreen() {
           </motion.div>
         </motion.div>
 
-        {/* Welcome Text */}
+        {/* Welcome Text with disintegration effect */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ 
+            opacity: showDisintegration ? 0.3 : 1, 
+            y: showDisintegration ? -10 : 0,
+            scale: showDisintegration ? 0.9 : 1
+          }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-xl text-gray-300 mb-8"
         >
