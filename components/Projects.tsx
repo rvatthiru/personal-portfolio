@@ -7,6 +7,7 @@ import { X } from 'lucide-react';
 
 interface Project {
   title: string;
+  image: string;
   abstract: string;
   star: {
     situation: string;
@@ -21,6 +22,7 @@ interface Project {
 const projects = [
   {
     title: 'COSMO.ai – Conversational AI Chatbot',
+    image: '🤖',
     abstract: 'Built a context-aware AI chatbot using Mistral AI, LlamaIndex, Jina embeddings, FastAPI, MongoDB, and Qdrant to deliver accurate (87%), consistent responses to student queries on compliance, programs, and policies.',
     star: {
       situation: 'Manual handling of student queries led to inconsistent responses and delays.',
@@ -33,6 +35,7 @@ const projects = [
   },
   {
     title: 'SMART Inventory Optimization Model',
+    image: '📦',
     abstract: 'Built a SARIMAX and polynomial regression-based demand forecasting model (20% improved accuracy) and applied EOQ optimization techniques to reduce excess inventory by 7.5%, enhancing procurement and working capital efficiency.',
     star: {
       situation: 'Excess inventory and inaccurate demand forecasting increased carrying costs.',
@@ -45,6 +48,7 @@ const projects = [
   },
   {
     title: 'Multi-Class Prediction of Cirrhosis Outcomes',
+    image: '🏥',
     abstract: 'Developed an XGBoost model for liver cirrhosis patient data with 83% accuracy, deployed on Databricks using MLFlow to track the performance with scalable and automated pipelines for real-time analytics.',
     star: {
       situation: 'Healthcare providers needed accurate prediction models for cirrhosis outcomes.',
@@ -70,17 +74,41 @@ export default function Projects() {
     setSelectedProject(null);
   };
 
-  // Auto-close modal on scroll
+  // Auto-close modal when navigating to different sections
   useEffect(() => {
-    const handleScroll = () => {
+    const handleSectionNavigation = () => {
       if (selectedProject) {
-        closeModal();
+        // Check if user has scrolled to a different section
+        const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+        const currentSection = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 100 && rect.bottom >= 100;
+          }
+          return false;
+        });
+        
+        // If user is not in projects section, close modal
+        if (currentSection && currentSection !== 'projects') {
+          closeModal();
+        }
       }
     };
 
     if (selectedProject) {
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+      // Use a debounced scroll handler to avoid too many calls
+      let timeoutId: NodeJS.Timeout;
+      const debouncedHandler = () => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(handleSectionNavigation, 150);
+      };
+
+      window.addEventListener('scroll', debouncedHandler);
+      return () => {
+        window.removeEventListener('scroll', debouncedHandler);
+        clearTimeout(timeoutId);
+      };
     }
   }, [selectedProject]);
 
@@ -115,6 +143,7 @@ export default function Projects() {
               className="group bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300 hover:scale-105 cursor-pointer"
               onClick={() => openModal(project)}
             >
+              <div className="text-6xl mb-4">{project.image}</div>
               <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">{project.title}</h3>
               <p className="text-gray-300 group-hover:text-gray-200 transition-colors">{project.abstract}</p>
             </motion.div>
