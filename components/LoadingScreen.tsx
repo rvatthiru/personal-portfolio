@@ -33,7 +33,7 @@ export default function LoadingScreen() {
           transition={{ duration: 1, type: "spring", bounce: 0.4 }}
           className="mb-8"
         >
-          <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-200 bg-clip-text text-transparent">
             TR
           </div>
         </motion.div>
@@ -54,7 +54,7 @@ export default function LoadingScreen() {
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{ duration: 2, ease: "easeInOut" }}
-            className="h-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full"
+            className="h-full bg-gradient-to-r from-gray-600 via-gray-400 to-gray-200 rounded-full"
           />
         </div>
 
@@ -78,7 +78,7 @@ export default function LoadingScreen() {
                 repeat: Infinity,
                 repeatDelay: Math.random() * 2
               }}
-              className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
+              className="absolute w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-200 rounded-full"
             />
           ))}
         </div>

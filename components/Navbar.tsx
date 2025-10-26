@@ -65,7 +65,7 @@ export default function Navbar() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent"
           >
             TR
           </motion.div>
@@ -81,7 +81,7 @@ export default function Navbar() {
                 onClick={() => scrollToSection(item.href)}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-purple-400'
+                    ? 'text-white'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -89,7 +89,7 @@ export default function Navbar() {
                 {activeSection === item.href.substring(1) && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-lg"
+                    className="absolute inset-0 bg-gradient-to-r from-gray-600/20 to-gray-400/20 rounded-lg"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -126,7 +126,7 @@ export default function Navbar() {
                 onClick={() => scrollToSection(item.href)}
                 className={`block w-full text-left px-3 py-2 text-sm font-medium transition-colors duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-purple-400 bg-purple-600/10'
+                    ? 'text-white bg-gray-600/10'
                     : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                 } rounded-lg`}
               >

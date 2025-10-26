@@ -74,7 +74,7 @@ export default function Experience() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
             Experience
           </h2>
           <p className="text-gray-400 text-lg">My professional journey in data</p>
@@ -82,7 +82,7 @@ export default function Experience() {
 
         <div className="relative" ref={ref}>
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 via-purple-600 to-pink-600" />
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-600 via-gray-400 to-gray-200" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -102,16 +102,16 @@ export default function Experience() {
                 } flex-col`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full border-4 border-gray-900 z-10 flex items-center justify-center">
+                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-gray-600 to-gray-400 rounded-full border-4 border-gray-900 z-10 flex items-center justify-center">
                   <Briefcase className="w-4 h-4 text-white" />
                 </div>
 
                 {/* Content card */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'} ml-16 md:ml-0`}>
-                  <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-purple-500 transition-all duration-300">
+                  <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
-                      <span className="text-purple-400 font-semibold">{exp.period}</span>
+                      <div className="w-3 h-3 bg-gradient-to-r from-gray-600 to-gray-400 rounded-full" />
+                      <span className="text-gray-300 font-semibold">{exp.period}</span>
                     </div>
                     <h3 className="text-2xl font-bold mb-2">{exp.role}</h3>
                     <p className="text-gray-400 mb-1">{exp.company}</p>
@@ -119,7 +119,7 @@ export default function Experience() {
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, i) => (
                         <li key={i} className="text-gray-300 flex items-start gap-2">
-                          <span className="text-purple-500 mt-1">▸</span>
+                          <span className="text-gray-400 mt-1">▸</span>
                           <span>{achievement}</span>
                         </li>
                       ))}

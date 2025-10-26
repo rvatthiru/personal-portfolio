@@ -29,7 +29,7 @@ export default function Hero() {
       {/* Animated gradient background */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute w-96 h-96 rounded-full blur-3xl opacity-30 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+          className="absolute w-96 h-96 rounded-full blur-3xl opacity-30 bg-gradient-to-r from-gray-600 via-gray-400 to-gray-200"
           style={{
             transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`,
             transition: 'transform 0.3s ease-out'
@@ -44,7 +44,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-gray-300 via-white to-gray-200 bg-clip-text text-transparent"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -97,7 +97,7 @@ export default function Hero() {
           >
             <button
               onClick={scrollToProjects}
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300"
+              className="group relative px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full font-semibold overflow-hidden hover:scale-105 transition-transform duration-300"
             >
               <span className="relative z-10 flex items-center gap-2">
                 View Projects
@@ -107,7 +107,7 @@ export default function Hero() {
 
             <button
               onClick={scrollToContact}
-              className="group px-8 py-4 border-2 border-purple-500 rounded-full font-semibold hover:bg-purple-500 hover:bg-opacity-10 transition-all duration-300 flex items-center gap-2"
+              className="group px-8 py-4 border-2 border-gray-400 rounded-full font-semibold hover:bg-gray-400 hover:bg-opacity-10 transition-all duration-300 flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
               Contact Me

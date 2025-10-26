@@ -45,7 +45,7 @@ export default function Skills() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
             Skills & Expertise
           </h2>
           <p className="text-gray-400 text-lg">Technical skills across the data stack</p>
@@ -64,7 +64,7 @@ export default function Skills() {
                 stiffness: 100,
                 damping: 15
               }}
-              className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-purple-500 transition-all duration-300"
+              className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300"
             >
               <h3 className="text-2xl font-bold mb-4">{category.name}</h3>
               <div className="space-y-3 mb-6">
@@ -72,11 +72,11 @@ export default function Skills() {
                   <div key={i}>
                     <div className="flex justify-between mb-2">
                       <span className="text-gray-300">{skill}</span>
-                      <span className="text-purple-400">{category.level}%</span>
+                      <span className="text-gray-300">{category.level}%</span>
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <motion.div
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full"
+                        className="bg-gradient-to-r from-gray-600 to-gray-400 h-2 rounded-full"
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${category.level}%` } : {}}
                         transition={{ duration: 1, delay: index * 0.2 + 0.3 }}

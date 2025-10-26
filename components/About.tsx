@@ -20,7 +20,7 @@ export default function About() {
         >
           <div>
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -59,12 +59,12 @@ export default function About() {
               className="relative"
             >
               {/* Decorative gradient circle */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-3xl opacity-20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-400 rounded-3xl blur-3xl opacity-20" />
               
               <div className="relative bg-gray-800 rounded-3xl p-8 border border-gray-700">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-400 rounded-xl flex items-center justify-center flex-shrink-0">
                       <span className="text-2xl">🎓</span>
                     </div>
                     <div>
@@ -74,7 +74,7 @@ export default function About() {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-300 rounded-xl flex items-center justify-center flex-shrink-0">
                       <span className="text-2xl">🏆</span>
                     </div>
                     <div>
@@ -84,7 +84,7 @@ export default function About() {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-pink-600 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-gray-400 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
                       <span className="text-2xl">⚡</span>
                     </div>
                     <div>

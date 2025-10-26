@@ -42,7 +42,7 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
             Featured Projects
           </h2>
           <p className="text-gray-400 text-lg">Impactful projects that drove business value</p>
@@ -61,7 +61,7 @@ export default function Projects() {
                 stiffness: 100,
                 damping: 15
               }}
-              className="group bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-purple-500 transition-all duration-300 hover:scale-105"
+              className="group bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300 hover:scale-105"
             >
               <div className="text-6xl mb-4">{project.image}</div>
               <div className="flex items-center gap-2 mb-2">
@@ -71,12 +71,12 @@ export default function Projects() {
               <p className="text-gray-300 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag, i) => (
-                  <span key={i} className="px-3 py-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm">
+                  <span key={i} className="px-3 py-1 bg-gradient-to-r from-gray-600 to-gray-400 rounded-full text-sm">
                     {tag}
                   </span>
                 ))}
               </div>
-              <button className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors">
+              <button className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
                 View Details <ExternalLink className="w-4 h-4" />
               </button>
             </motion.div>
