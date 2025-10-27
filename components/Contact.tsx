@@ -3,18 +3,51 @@
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Send } from 'lucide-react';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+      return;
+    }
+
+    setStatus('loading');
+
+    try {
+      await emailjs.send(
+        'service_cyw18x4',
+        'template_mkjbt4r',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject || 'Contact Form Submission',
+          message: formData.message,
+        },
+        'XE70Bku_mFTQgjj_I'
+      );
+
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+    }
   };
 
   return (
@@ -45,6 +78,7 @@ export default function Contact() {
               <label className="block text-gray-300 mb-2 font-medium">Name</label>
               <input
                 type="text"
+                required
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/30 rounded-lg focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all text-white placeholder-gray-400"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -55,6 +89,7 @@ export default function Contact() {
               <label className="block text-gray-300 mb-2 font-medium">Email</label>
               <input
                 type="email"
+                required
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/30 rounded-lg focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all text-white placeholder-gray-400"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -62,9 +97,20 @@ export default function Contact() {
               />
             </div>
             <div>
+              <label className="block text-gray-300 mb-2 font-medium">Subject (Optional)</label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/30 rounded-lg focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all text-white placeholder-gray-400"
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                placeholder="What is this about?"
+              />
+            </div>
+            <div>
               <label className="block text-gray-300 mb-2 font-medium">Message</label>
               <textarea
                 rows={5}
+                required
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/30 rounded-lg focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all resize-none text-white placeholder-gray-400"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -73,10 +119,29 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 text-white shadow-lg shadow-gray-500/25"
+              disabled={status === 'loading'}
+              className="w-full px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-500 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 text-white shadow-lg shadow-gray-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message <Send className="w-5 h-5" />
+              {status === 'loading' ? 'Sending...' : 'Send Message'} <Send className="w-5 h-5" />
             </button>
+            {status === 'success' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-green-900/30 border border-green-500/50 rounded-lg text-green-300 text-center"
+              >
+                ✓ Message sent successfully! Check your inbox.
+              </motion.div>
+            )}
+            {status === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-red-900/30 border border-red-500/50 rounded-lg text-red-300 text-center"
+              >
+                ✗ Failed to send message. Please try again or email me directly.
+              </motion.div>
+            )}
           </motion.form>
 
           {/* Direct Links */}
