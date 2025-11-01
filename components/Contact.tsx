@@ -57,7 +57,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Let&apos;s Connect
@@ -72,10 +72,10 @@ export default function Contact() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             onSubmit={handleSubmit}
-            className="space-y-6"
+            className="space-y-3"
           >
             <div>
-              <label className="block text-gray-300 mb-2 font-medium">Name</label>
+              <label className="block text-gray-300 mb-1 font-medium">Name</label>
               <input
                 type="text"
                 required
@@ -109,7 +109,7 @@ export default function Contact() {
             <div>
               <label className="block text-gray-300 mb-2 font-medium">Message</label>
               <textarea
-                rows={5}
+                rows={4}
                 required
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/30 rounded-lg focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all resize-none text-white placeholder-gray-400"
                 value={formData.message}

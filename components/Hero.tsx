@@ -65,7 +65,7 @@ export default function Hero() {
                      >
                        A data storyteller who turns complexity into clarity.<br />
                        I design analytics, dashboards, and predictive systems that empower real business decisions across marketing, finance, and operations.<br />
-                       Let&apos;s turn your data into strategy.
+                      
                      </motion.p>
 
               <motion.div 

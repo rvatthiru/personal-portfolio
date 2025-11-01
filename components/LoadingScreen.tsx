@@ -100,20 +100,6 @@ export default function LoadingScreen() {
           </motion.div>
         </motion.div>
 
-        {/* Welcome Text with disintegration effect */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ 
-            opacity: showDisintegration ? 0.3 : 1, 
-            y: showDisintegration ? -10 : 0,
-            scale: showDisintegration ? 0.9 : 1
-          }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-xl text-gray-300 mb-8"
-        >
-          Welcome to my portfolio
-        </motion.div>
-
         {/* Floating Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(15)].map((_, i) => (
