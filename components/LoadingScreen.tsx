@@ -20,8 +20,8 @@ export default function LoadingScreen() {
         setIsLoading(false);
         // Re-enable scrolling
         document.body.style.overflow = 'unset';
-      }, 600); // Reduced delay for faster loading
-    }, 1000); // Reduced initial delay for faster loading
+      }, 1000); // Delay to see disintegration effect
+    }, 2000); // Initial delay before disintegration starts
 
     return () => {
       clearTimeout(timer);
@@ -85,7 +85,7 @@ export default function LoadingScreen() {
           className="mb-8"
         >
           <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-300 via-white to-gray-200 bg-clip-text text-transparent mb-4">
-            Hello there
+            Hello, there!
           </div>
           <motion.div
             initial={{ scale: 0 }}
@@ -94,7 +94,7 @@ export default function LoadingScreen() {
               opacity: showDisintegration ? 0.3 : 1
             }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-6xl md:text-8xl"
+            className="text-7xl md:text-9xl lg:text-[10rem]"
           >
             👋
           </motion.div>
