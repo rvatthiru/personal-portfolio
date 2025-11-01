@@ -62,7 +62,7 @@ export default function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Let&apos;s Connect
           </h2>
-          <p className="text-gray-300 text-lg">Open to new opportunities and collaborations</p>
+          <p className="text-gray-300 text-lg">I'm always open to interesting projects or conversations</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">

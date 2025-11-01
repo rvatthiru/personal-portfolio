@@ -34,10 +34,10 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
-                With a Master&apos;s in Business Analytics & AI from UTD and 4+ years of experience in Data Analytics, BI, and Data Science, I transform raw data into narratives that drive strategy and measurable business impact.
+                Master&apos;s in Business Analytics & AI from UTD, plus 4+ years working with data across BI, analytics, and data science. I've learned that the best insights are useless if they don't get used — so I make sure mine do.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                From visualization and automation to predictive modeling, my passion lies in bridging the gap between insight and action — helping organizations make smarter, faster, and more informed decisions.
+                I build things: dashboards that execs check daily, pipelines that actually work, and models that improve decisions. If it helps someone avoid a bad call or find a better path, I'm interested.
               </p>
             </motion.div>
           </div>

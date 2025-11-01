@@ -22,11 +22,23 @@ export default function Hero() {
   }, []);
 
   const scrollToAbout = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('about');
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
   };
 
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('contact');
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
   };
 
   const downloadCV = () => {
@@ -63,8 +75,8 @@ export default function Hero() {
                        animate={{ opacity: 1, y: 0 }}
                        transition={{ duration: 0.8, delay: 0.4 }}
                      >
-                       A data storyteller who turns complexity into clarity.<br />
-                       I design analytics, dashboards, and predictive systems that empower real business decisions across marketing, finance, and operations.<br />
+                       I turn messy data into clean insights that teams actually use.<br />
+                       Whether it's building dashboards, automating workflows, or deploying ML models, I focus on what moves the needle for marketing, finance, and operations teams.<br />
                       
                      </motion.p>
 

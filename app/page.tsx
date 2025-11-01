@@ -7,7 +7,9 @@ import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen';
+import ScrollToTop from '@/components/ScrollToTop';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -27,6 +29,8 @@ export default function Home() {
         <Projects />
         <Skills />
         <Contact />
+        <Footer />
+        <ScrollToTop />
       </motion.main>
     </>
   );

@@ -47,7 +47,10 @@ export default function Navbar() {
     if (typeof window !== 'undefined') {
       const element = document.getElementById(href.substring(1));
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const offset = 80; // Account for navbar height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       }
     }
     setIsOpen(false);

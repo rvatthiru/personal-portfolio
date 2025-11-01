@@ -20,8 +20,8 @@ export default function LoadingScreen() {
         setIsLoading(false);
         // Re-enable scrolling
         document.body.style.overflow = 'unset';
-      }, 800); // Increased delay to see disintegration effect
-    }, 1500);
+      }, 600); // Reduced delay for faster loading
+    }, 1000); // Reduced initial delay for faster loading
 
     return () => {
       clearTimeout(timer);

@@ -157,7 +157,7 @@ export default function Projects() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          <p className="text-gray-300 text-lg">Impactful projects that drove business value</p>
+          <p className="text-gray-300 text-lg">Projects that solved real problems</p>
         </motion.div>
 
         <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
