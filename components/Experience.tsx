@@ -207,7 +207,7 @@ export default function Experience() {
                 </div>
 
                 {/* Content card */}
-                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'} ml-16 md:ml-0`}>
+                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'} ml-12 sm:ml-16 md:ml-0`}>
                   <div 
                     className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-gray-400 transition-all duration-300 cursor-pointer hover:scale-105"
                     onClick={() => openModal(exp)}
@@ -252,16 +252,17 @@ export default function Experience() {
               </div>
               <button
                 onClick={closeModal}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors p-2 sm:p-1"
+                aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 sm:w-5 sm:h-5" />
               </button>
             </div>
 
             {/* Summary */}
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-white mb-2">Summary</h3>
-              <p className="text-gray-300 text-sm">{selectedExperience.summary}</p>
+              <p className="text-gray-300 text-base sm:text-sm">{selectedExperience.summary}</p>
             </div>
 
             {/* Key Achievements */}
@@ -269,7 +270,7 @@ export default function Experience() {
               <h3 className="text-lg font-semibold text-white mb-3">Key Achievements</h3>
               <ul className="space-y-3">
                 {selectedExperience.achievements.map((achievement, i) => (
-                  <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+                  <li key={i} className="text-gray-300 text-base sm:text-sm flex items-start gap-2">
                     <span className="text-gray-400 mt-1">▸</span>
                     <span>{achievement}</span>
                   </li>

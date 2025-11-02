@@ -155,7 +155,7 @@ export default function Hero() {
                            <motion.img
                              src="https://camo.githubusercontent.com/2366b34bb903c09617990fb5fff4622f3e941349e846ddb7e73df872a9d21233/68747470733a2f2f63646e2e6472696262626c652e636f6d2f75736572732f3733303730332f73637265656e73686f74732f363538313234332f6176656e746f2e676966"
                              alt="Data Pipeline Animation"
-                             className="w-80 h-80 object-contain"
+                             className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
                              onError={(e) => {
                                e.currentTarget.src = 'https://via.placeholder.com/320x320/374151/9ca3af?text=Building+Data+Pipelines';
                              }}
@@ -173,7 +173,7 @@ export default function Hero() {
                            <motion.img
                              src="https://cdn.dribbble.com/userupload/23506760/file/original-c98eae4c7d7385f0c5fa1780bfd25ed5.gif"
                              alt="Data Analytics Animation"
-                             className="w-80 h-80 object-contain"
+                             className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
                              onError={(e) => {
                                e.currentTarget.src = 'https://via.placeholder.com/320x320/374151/9ca3af?text=Turning+Data+Into+Insights';
                              }}
@@ -191,7 +191,7 @@ export default function Hero() {
                            <motion.img
                              src="https://i.brecorder.com/primary/2024/06/08125154377ed6a.gif"
                              alt="Business Strategy Animation"
-                             className="w-80 h-80 object-contain"
+                             className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
                              onError={(e) => {
                                e.currentTarget.src = 'https://via.placeholder.com/320x320/374151/9ca3af?text=Driving+Business+Decisions';
                              }}

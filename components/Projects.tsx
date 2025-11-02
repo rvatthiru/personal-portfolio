@@ -214,9 +214,10 @@ export default function Projects() {
               <h2 className="text-2xl font-bold text-white">{selectedProject.title}</h2>
               <button
                 onClick={closeModal}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors p-2 sm:p-1"
+                aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 sm:w-5 sm:h-5" />
               </button>
             </div>
 
@@ -224,29 +225,29 @@ export default function Projects() {
             <div className="space-y-4 mb-6">
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Situation</h3>
-                <p className="text-gray-300 text-sm">{selectedProject.star.situation}</p>
+                <p className="text-gray-300 text-base sm:text-sm">{selectedProject.star.situation}</p>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Task</h3>
-                <p className="text-gray-300 text-sm">{selectedProject.star.task}</p>
+                <p className="text-gray-300 text-base sm:text-sm">{selectedProject.star.task}</p>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Action</h3>
-                <p className="text-gray-300 text-sm">{selectedProject.star.action}</p>
+                <p className="text-gray-300 text-base sm:text-sm">{selectedProject.star.action}</p>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Result</h3>
-                <p className="text-gray-300 text-sm">{selectedProject.star.result}</p>
+                <p className="text-gray-300 text-base sm:text-sm">{selectedProject.star.result}</p>
               </div>
             </div>
 
             {/* Impact */}
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-white mb-1">Impact</h3>
-              <p className="text-gray-300 text-sm">{selectedProject.impact}</p>
+              <p className="text-gray-300 text-base sm:text-sm">{selectedProject.impact}</p>
             </div>
 
             {/* Tools Used */}
