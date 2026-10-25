@@ -17,52 +17,52 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    role: 'Associate Data Analyst',
+    role: 'Senior Associate Data Analyst',
     company: 'Vibrant America',
     period: 'Aug 2025 – Present',
     location: 'San Jose, CA',
-    summary: 'Built analytics pipelines and Power BI dashboards to improve data reliability and reduce SLA breaches through automated monitoring and reporting.',
+    summary: 'Own commercial analytics for a B2B diagnostics business: forecasting, pipeline visibility, attribution, and CRM signals that sales leadership and the field use.',
     achievements: [
-      'Built an analytics pipeline (Airbyte → ClickHouse → DBT), improving data reliability and reducing reporting effort by 40%',
-      'Engineered a Power BI dashboard on turnaround times and workloads, cutting SLA breaches by 20% through automated email alerts'
+      'Owned the weekly forecast and pipeline rhythm in SQL, Excel, and Power BI for a $108M (2025) / $75M (2026) book, with one narrative for sales leadership',
+      'Linked about $75M of tracked 2025 revenue to NRR, ARR, ROAS, and CPA so channel tradeoffs used a shared definition',
+      'Reverse-ETL’d account priorities into HubSpot via Hightouch (Protect / Grow / Re-engage) so sellers executed from CRM, not slides',
+      'Shipped a Cube-grounded Slack analytics agent adopted by 25+ people, and co-authored data contracts after legacy models had obscured $2.5M in reported revenue'
     ],
-    tools: ['Airbyte', 'ClickHouse', 'DBT', 'Power BI', 'SQL', 'Data Pipelines']
+    tools: ['SQL', 'Power BI', 'dbt', 'HubSpot', 'Hightouch', 'Cube.js', 'Airbyte']
   },
   {
     role: 'Business Intelligence Intern',
     company: 'Federal Home Loan Bank of Dallas',
     period: 'Jan 2025 – May 2025',
     location: 'Irving, TX',
-    summary: 'Automated fund request processes and developed Power BI dashboards using Power Platform integration with Azure Document Intelligence for loan eligibility evaluation.',
+    summary: 'Housing-finance analytics for sales coverage and loan-operations reliability.',
     achievements: [
-      'Automated the fund request process using Power Apps + Power Automate + MS SQL, reducing manual entry by 60% and accelerating SLA-compliant disbursements',
-      'Developed a Power BI dashboard to identify slow SQL queries and optimise indexing and joins, cutting execution time by 30% and boosting system responsiveness',
-      'Built an app using Power Platform to evaluate loan eligibility using Azure Document Intelligence and Python, and real-time dashboard updates, reducing processing delays by 40%'
+      'Built an Excel, SQL, and Power BI utilization model that scored quiet accounts and surfaced $15M+ in pipeline for sales outreach',
+      'Automated intake-to-payment workflows with SQL and Power Platform: processing delays down 40%, on-time disbursements up 60%'
     ],
-    tools: ['Power Apps', 'Power Automate', 'Power BI', 'MS SQL', 'Azure Document Intelligence', 'Python']
+    tools: ['Excel', 'SQL', 'Power BI', 'Power Platform']
   },
   {
     role: 'Data Science Intern',
     company: 'UST',
     period: 'May 2024 – Aug 2024',
     location: 'Aliso Viejo, CA',
-    summary: 'Developed forecasting models and deployed XGBoost models for customer segmentation and CLV prediction with high accuracy to enable marketing optimization.',
+    summary: 'Forecasting and lead scoring for GTM planning and SDR/AE routing.',
     achievements: [
-      'Analyzed sales trends and developed a forecasting model (Prophet; RMSE: 2.68), enabling FY25 budget optimization',
-      'Deployed XGBoost models for customer segmentation and CLV prediction with 96% accuracy, enabling marketing to identify high-value segments, optimise targeting, and boost retention campaigns'
+      'Built a demand forecast (Prophet, RMSE 2.68) that finance and GTM used for planning baselines',
+      'Built signal-based scoring and routing for SDR/AE conversion: conversion up 6%, CAC down $300 per user'
     ],
-    tools: ['Prophet', 'XGBoost', 'Python', 'Machine Learning', 'Forecasting', 'Customer Analytics']
+    tools: ['Prophet', 'Python', 'SQL', 'Forecasting', 'Lead scoring']
   },
   {
     role: 'Associate Analyst',
     company: 'Newell Brands',
     period: 'Apr 2022 – Jul 2023',
     location: 'India',
-    summary: 'Developed Power BI workflows and ETL pipelines to rationalize suppliers and streamline procurement processes, resulting in significant cost savings.',
+    summary: 'Partner-book coverage and process automation for a large vendor portfolio.',
     achievements: [
-      'Developed a Power BI + Power Apps workflow to rationalize 100+ suppliers, saving $2.5M in procurement through tail-spend reduction',
-      'Built ETL pipelines with SQL and Python to create feature-ready datasets for ad-hoc dashboards, cutting prep time by 30% and enabling procurement insights',
-      'Streamlined supplier request process by integrating Power Platform with automated email updates to track request status, cutting submission time by 50%'
+      'Ranked 100+ accounts by health and drove $2.5M in annual savings by focusing coverage on the top of the book',
+      'Cut partner onboarding time 50% by automating request and approval workflows in Power Platform'
     ],
     tools: ['Power BI', 'Power Apps', 'SQL', 'Python', 'ETL Pipelines', 'Procurement Analytics']
   },
@@ -71,13 +71,12 @@ const experiences: Experience[] = [
     company: 'Cognizant Technology Solutions',
     period: 'Aug 2020 – Apr 2022',
     location: 'India',
-    summary: 'Created Power BI dashboards and automated data extraction processes to track energy delivery, pricing, and ServiceNow tickets with real-time monitoring.',
+    summary: 'Pricing analysis and executive GTM reporting for SalesOps and RevOps.',
     achievements: [
-      'Created a Power BI dashboard using DAX and M-Query to track energy delivery and pricing, revealing 12% higher churn in undercut regions and guiding pricing strategy adjustments',
-      'Published a real-time Power BI dashboard on ServiceNow data, alerting high-priority SLA-risk tickets and sending automated emails via Power Automate, cutting breaches by 40%',
-      'Automated data extraction and transformation from Hadoop using HiveQL scripts, reducing manual prep by 20%, and built Power BI dashboards to deliver high-level business insights across energy operations'
+      'Quantified 12% higher churn in underpriced regions to guide pricing and retention decisions',
+      'Automated executive GTM reporting from Hadoop into Power BI, cutting leadership time-to-insight 20%'
     ],
-    tools: ['Power BI', 'DAX', 'M-Query', 'Power Automate', 'Hadoop', 'HiveQL', 'ServiceNow']
+    tools: ['Power BI', 'SQL', 'Hadoop']
   }
 ];
 

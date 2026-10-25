@@ -21,6 +21,84 @@ interface Project {
 
 const projects = [
   {
+    title: 'Commercial analytics foundation',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=center',
+    abstract: 'Owned the path from source systems to a warehouse, dbt models, a Cube semantic layer, and Power BI so leadership stopped reconciling competing spreadsheets.',
+    star: {
+      situation: 'Commercial reporting had no shared definitions and broke when upstream schemas changed.',
+      task: 'Stand up a governed analytics path the business could trust.',
+      action: 'Ingestion with Airbyte, transforms in dbt, metrics in Cube.js, distribution in Power BI, plus data contracts with IT.',
+      result: 'One stack for forecasts, attribution, and CRM signals on a $108M (2025) book.'
+    },
+    impact: 'Sales, marketing, and finance could argue from the same numbers.',
+    tools: ['Airbyte', 'dbt', 'ClickHouse', 'BigQuery', 'Cube.js', 'Power BI']
+  },
+  {
+    title: 'Multi-touch revenue attribution',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center',
+    abstract: 'Linked behavioral touchpoints to about $75M of tracked 2025 revenue and exposed NRR, ARR, ROAS, and CPA for spend tradeoffs.',
+    star: {
+      situation: 'Channel investment decisions were made without a shared view of what revenue each motion touched.',
+      task: 'Attribute tracked revenue to acquisition metrics leaders already use.',
+      action: 'Built the attribution views on the warehouse and published them for GTM reviews.',
+      result: 'About $75M of tracked revenue tied to NRR, ARR, ROAS, and CPA. This is tracked revenue, not incremental revenue created.'
+    },
+    impact: 'Leaders could reallocate GTM spend using one definition.',
+    tools: ['SQL', 'dbt', 'Power BI']
+  },
+  {
+    title: 'HubSpot account priorities',
+    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop&crop=center',
+    abstract: 'Scored accounts Protect / Grow / Re-engage and reverse-ETL’d the result into HubSpot so sellers worked the book from CRM.',
+    star: {
+      situation: 'Warehouse truth never reached the reps who had to act on it.',
+      task: 'Put account priority into the CRM workflow.',
+      action: 'Defined the scoring, modeled it in the warehouse, and synced it with Hightouch.',
+      result: 'SDRs and account owners executed from HubSpot fields instead of slide decks.'
+    },
+    impact: 'Coverage followed the score, not inbox order.',
+    tools: ['HubSpot', 'Hightouch', 'dbt', 'SQL']
+  },
+  {
+    title: 'Self-serve analytics in Slack',
+    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop&crop=center',
+    abstract: 'A Slack agent grounded in the Cube semantic layer so nontechnical partners can ask GTM questions without a new dashboard ticket.',
+    star: {
+      situation: 'Leaders waited on analysts for questions the warehouse could already answer.',
+      task: 'Give them a governed natural-language path to the same metrics as BI.',
+      action: 'Grounded the agent in Cube.js tables, columns, and joins, then ran enablement.',
+      result: '25+ people adopted it. Answers stay on the shared metric definitions.'
+    },
+    impact: 'Fewer ad-hoc tickets for questions the semantic layer already defined.',
+    tools: ['Cube.js', 'Slack', 'dbt']
+  },
+  {
+    title: 'Weekly forecast cadence',
+    image: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?w=400&h=300&fit=crop&crop=center',
+    abstract: 'A repeating pipeline and revenue outlook with risk and opportunity callouts for sales leadership and the field.',
+    star: {
+      situation: 'Forecast asks arrived as one-off spreadsheets with different baselines.',
+      task: 'Make one weekly story the business could plan from.',
+      action: 'SQL, Excel, and Power BI views with P75 baselines and a short written narrative.',
+      result: 'Leadership and about 20 sellers shared one outlook instead of competing versions.'
+    },
+    impact: 'Planning conversations started from the same pipeline picture.',
+    tools: ['SQL', 'Excel', 'Power BI']
+  },
+  {
+    title: 'Revenue data contracts',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&crop=center',
+    abstract: 'Legacy model logic had hidden $2.5M of reported revenue. Data contracts and a dbt remodel restored a number finance and GTM could both use.',
+    star: {
+      situation: 'Reported revenue did not match what operators expected, and nobody could trace why.',
+      task: 'Find the gap and stop the next silent break.',
+      action: 'Traced the legacy logic, remodeled in dbt, and co-authored contracts with IT.',
+      result: 'Restored visibility on $2.5M that had been obscured. Not new revenue.'
+    },
+    impact: 'Downstream CRM and AI tools consumed the corrected metric.',
+    tools: ['dbt', 'SQL', 'Data contracts']
+  },
+  {
     title: 'COSMO.ai – Conversational AI Chatbot',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=center',
     abstract: 'Built a context-aware AI chatbot using Mistral AI, LlamaIndex, Jina embeddings, FastAPI, MongoDB, and Qdrant to deliver accurate (87%), consistent responses to student queries on compliance, programs, and policies.',

@@ -8,9 +8,9 @@ export default function Hero() {
   const [currentAnimation, setCurrentAnimation] = useState(0);
   
   const animations = [
-    "Building robust data pipelines",
-    "Turning data into insights", 
-    "Driving business decisions"
+    "Forecasts sales leaders can use",
+    "Pipeline and attribution in one story",
+    "CRM signals the field actually runs"
   ];
 
   useEffect(() => {
@@ -75,8 +75,8 @@ export default function Hero() {
                        animate={{ opacity: 1, y: 0 }}
                        transition={{ duration: 0.8, delay: 0.4 }}
                      >
-                       I turn messy data into clean insights that teams actually use.<br />
-                       Whether it's building dashboards, automating workflows, or deploying ML models, I focus on what moves the needle for marketing, finance, and operations teams.<br />
+                       Sales and revenue analytics for teams that need one set of numbers.<br />
+                       I build the forecast cadence, pipeline views, and CRM signals that Sales, Marketing, and Finance use to decide — not another dashboard that sits unread.<br />
                       
                      </motion.p>
 
