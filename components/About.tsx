@@ -34,10 +34,10 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="text-gray-300 text-lg mb-4 leading-relaxed">
-                Master&apos;s in Business Analytics & AI from UTD, plus 4+ years working with data across BI, analytics, and data science. I've learned that the best insights are useless if they don't get used — so I make sure mine do.
+                Master&apos;s in Business Analytics and AI from UT Dallas, and about five years across analytics and revenue operations. I&apos;m a Senior Associate Data Analyst at Vibrant America, where I own commercial reporting for a B2B book: forecasting, pipeline health, and attribution.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                I build things: dashboards that execs check daily, pipelines that actually work, and models that improve decisions. If it helps someone avoid a bad call or find a better path, I'm interested.
+                The work only counts if someone uses it. I put priorities into HubSpot, write the weekly narrative for sales leadership, and ship self-serve analytics so partners are not waiting on a ticket.
               </p>
             </motion.div>
           </div>

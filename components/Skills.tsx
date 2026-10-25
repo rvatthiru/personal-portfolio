@@ -6,23 +6,23 @@ import { useRef } from 'react';
 
 const skillCategories = [
   {
-    name: 'Tools & Platforms',
-    skills: ['Power BI', 'Power Apps', 'Power Automate', 'ClickHouse', 'DBT'],
+    name: 'Revenue analytics',
+    skills: ['Forecasting', 'Pipeline health', 'Attribution', 'Excel'],
     level: 9
   },
   {
-    name: 'Programming Languages',
-    skills: ['SQL (MySQL, HiveQL)', 'Python', 'R'],
+    name: 'Data stack',
+    skills: ['SQL', 'Python', 'dbt', 'Airbyte', 'BigQuery', 'ClickHouse'],
     level: 9
   },
   {
-    name: 'Data & Cloud',
-    skills: ['Azure', 'Hadoop', 'Databricks'],
+    name: 'CRM and BI',
+    skills: ['HubSpot', 'Hightouch', 'Power BI', 'Cube.js'],
     level: 8
   },
   {
-    name: 'AI/ML & Analytics',
-    skills: ['Machine Learning', 'Feature Engineering', 'Fine Tuning', 'GenAI', 'LLMs'],
+    name: 'AI for GTM',
+    skills: ['Slack analytics agent', 'Cursor', 'Claude'],
     level: 8
   }
 ];
