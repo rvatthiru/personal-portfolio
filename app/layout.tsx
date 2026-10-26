@@ -1,12 +1,42 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Providers from "@/components/Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const display = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  style: ["normal", "italic"],
+});
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+
+const siteUrl = "https://personal-portfolio-eight-mocha-95.vercel.app";
 
 export const metadata: Metadata = {
-  title: "Thirunarayanan Raman | Data Analytics & Data Science Portfolio",
-  description: "Portfolio of a Data Analytics, Business Intelligence, and Data Science professional with 4 years of experience.",
+  metadataBase: new URL(siteUrl),
+  title: "Thirunarayanan Raman | Making numbers decisive",
+  description:
+    "A career in data told in five chapters: commercial analytics, forecasting, attribution and CRM signals at Vibrant America, and the roles that led there.",
+  openGraph: {
+    title: "Thirunarayanan Raman | Making numbers decisive",
+    description:
+      "Watch a career in data unfold: from Power BI dashboards to a governed commercial analytics stack at Vibrant America.",
+    type: "website",
+    url: siteUrl,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thirunarayanan Raman | Making numbers decisive",
+    description: "A career in data, told as a story.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FAF7F2",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -15,11 +45,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className={`${inter.className} bg-black text-white antialiased`}>
-        <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black">
-          {children}
-        </div>
+    <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+      <body className="font-sans">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

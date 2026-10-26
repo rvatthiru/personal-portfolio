@@ -1,127 +1,57 @@
-# Portfolio Website - Thirunarayanan Raman
+# Thirunarayanan Raman: cinematic career portfolio
 
-A modern, interactive, narrative-style portfolio website for a Data Analytics, Business Intelligence, and Data Science professional.
+A light, editorial, scroll-driven portfolio that tells a career in data as a short film:
+a title sequence, five chapters, and end credits. Vibrant America is the main feature.
 
-## 🚀 Features
+## Stack
 
-- **Modern Design**: Elegant dark theme with gradient accents
-- **Smooth Animations**: Framer Motion for engaging scroll animations
-- **Interactive Sections**: 
-  - Hero section with animated background
-  - About/Journey section
-  - Experience timeline
-  - Projects gallery
-  - Skills visualization
-  - Impact highlights
-  - Contact form
-- **Fully Responsive**: Works seamlessly on desktop, tablet, and mobile
-- **Performance Optimized**: Built with Next.js for fast loading
+- Next.js 15 (App Router), React 18, TypeScript
+- Tailwind CSS 3 with a custom design system (`tailwind.config.ts`, `app/globals.css`)
+- Framer Motion for scroll-linked animation, counters and pinned scenes
+- Lucide icons, EmailJS for the contact form
 
-## 🛠️ Tech Stack
+## Run it
 
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS
-- **Animation**: Framer Motion
-- **Charts**: React-Chart.js (for future enhancements)
-- **Icons**: Lucide React
-- **Language**: TypeScript
-
-## 📦 Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-```
-
-2. Install dependencies:
 ```bash
 npm install
+npm run dev      # http://localhost:3000
+npm run build && npm start
+npx eslint .
 ```
 
-3. Run the development server:
-```bash
-npm run dev
+## Where things live
+
+| Path | What it is |
+| --- | --- |
+| `data/story.ts` | **All copy, numbers and links.** Edit this to change the story. |
+| `components/Intro.tsx` | Title card, typewriter tagline, "now showing" poster, film strip |
+| `components/Origin.tsx` | Chapter 1: origin and portrait |
+| `components/Journey.tsx` | Chapter 2: stacking role cards (Cognizant, Newell, UT Dallas, UST, FHLB) |
+| `components/VibrantAmerica.tsx` | Chapter 3: pinned scenes, problem / action / result |
+| `components/vibrant/Visuals.tsx` | The animated "screen" for each Vibrant America scene |
+| `components/Impact.tsx` | Chapter 4: animated counters |
+| `components/Toolkit.tsx` | Chapter 5: tools marquee and side projects |
+| `components/Credits.tsx` | Contact form, links, end credits |
+| `app/opengraph-image.tsx`, `app/icon.tsx` | Generated social image and favicon |
+
+## Contact form
+
+EmailJS public identifiers have working defaults in `components/Credits.tsx`.
+To override them, set these in `.env.local` (and in Vercel):
+
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+## Design notes
 
-## 🏗️ Build for Production
+- Layout never relies on fixed text heights; type is fluid (`clamp()`), and the pinned
+  "stage" only activates on screens that are wide and tall enough (`stage` / `tall` screens).
+- `prefers-reduced-motion` is honoured globally (`MotionConfig` plus a CSS fallback).
+- Metrics are written exactly as claimed: tracked revenue is not described as incremental revenue.
 
-```bash
-npm run build
-npm start
-```
+## Deploy
 
-## 📁 Project Structure
-
-```
-portfolio/
-├── app/
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Main page
-│   └── globals.css         # Global styles
-├── components/
-│   ├── Hero.tsx            # Hero section
-│   ├── About.tsx           # About/Journey section
-│   ├── Experience.tsx      # Experience timeline
-│   ├── Projects.tsx        # Projects gallery
-│   ├── Skills.tsx          # Skills section
-│   ├── Impact.tsx          # Impact highlights
-│   └── Contact.tsx         # Contact form
-├── public/
-│   └── Thirunarayanan_Raman_Resume_1.pdf  # Resume
-└── ...config files
-```
-
-## 🎨 Customization
-
-### Replace Content
-
-1. **Personal Information**: Update name, tagline, and description in `components/Hero.tsx`
-2. **Experience**: Modify the `experiences` array in `components/Experience.tsx`
-3. **Projects**: Update the `projects` array in `components/Projects.tsx`
-4. **Skills**: Edit the `skillCategories` in `components/Skills.tsx`
-5. **Contact**: Update email and social links in `components/Contact.tsx`
-
-### Colors & Theme
-
-The color scheme is defined using Tailwind CSS classes. Primary colors are:
-- Blue: `from-blue-400 to-blue-600`
-- Purple: `from-purple-400 to-purple-600`
-- Pink: `from-pink-400 to-pink-600`
-
-Modify these in the components to match your preferences.
-
-## 📝 Content Guidelines
-
-When updating content, remember:
-- Keep paragraphs short and scannable
-- Use measurable metrics (e.g., "85% accuracy", "25+ dashboards")
-- Focus on impact and business value
-- Use action verbs in achievements
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import your repository on [Vercel](https://vercel.com)
-3. Deploy automatically
-
-### Netlify
-
-1. Push your code to GitHub
-2. Import your repository on [Netlify](https://www.netlify.com)
-3. Set build command: `npm run build`
-4. Set publish directory: `.next`
-5. Deploy
-
-## 📧 Contact
-
-For questions or feedback, please reach out through the contact form on the website.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-
+Push to GitHub and import the repo in Vercel. No extra configuration is needed.
