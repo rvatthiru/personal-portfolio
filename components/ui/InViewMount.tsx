@@ -1,7 +1,6 @@
 "use client";
 
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Mounts its children the first time they scroll into view, which lets
@@ -10,17 +9,34 @@ import { useRef } from "react";
 export default function InViewMount({
   children,
   className,
-  margin = "0px 0px -15% 0px",
+  margin = "0px 0px -10% 0px",
 }: {
   children: React.ReactNode;
   className?: string;
   margin?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: margin as `${number}px` });
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || shown) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: margin, threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [margin, shown]);
+
   return (
     <div ref={ref} className={className}>
-      {inView ? children : null}
+      {shown ? children : null}
     </div>
   );
 }

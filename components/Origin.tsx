@@ -55,7 +55,7 @@ export default function Origin() {
   const portraitY = useTransform(scrollYProgress, [0, 1], [24, -24]);
 
   return (
-    <section ref={ref} id="origin" className="section-y relative">
+    <section ref={ref} id="origin" className="section-y relative overflow-x-clip">
       <div className="container-x">
         <ChapterHeading
           no="01"

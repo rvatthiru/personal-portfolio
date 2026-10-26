@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown, MapPin } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ChapterHeading from "@/components/ui/ChapterHeading";
@@ -22,12 +22,20 @@ function SceneText({
   onActive: (i: number) => void;
 }) {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { margin: "-42% 0px -42% 0px" });
   const a = accents[scene.accent];
 
   useEffect(() => {
-    if (inView) onActive(index);
-  }, [inView, index, onActive]);
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) onActive(index);
+      },
+      { rootMargin: "-35% 0px -35% 0px", threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [index, onActive]);
 
   const blocks = [
     { label: "The problem", body: scene.situation },
@@ -167,11 +175,11 @@ export default function VibrantAmerica() {
           </div>
 
           <div className="hidden stage:col-span-7 stage:block">
-            <div className="sticky top-28 h-[min(70vh,35rem)]">
+            <div className="sticky top-24 flex h-[calc(100dvh-7.5rem)] max-h-[46rem] flex-col">
               {/* Keyed remount (no exit animation) so rapid scrolling can never leave the stage empty. */}
               <motion.div
                 key={current.id}
-                className="h-full"
+                className="min-h-0 flex-1"
                 initial={{ opacity: 0, scale: 0.97, y: 14 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -179,7 +187,7 @@ export default function VibrantAmerica() {
                 <SceneVisual id={current.id} />
               </motion.div>
 
-              <div className="mt-4 flex items-center justify-between gap-4" aria-hidden>
+              <div className="mt-3 flex shrink-0 items-center justify-between gap-4" aria-hidden>
                 <div className="flex items-center gap-2">
                   {vibrantScenes.map((s, i) => (
                     <span

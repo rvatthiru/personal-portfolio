@@ -16,7 +16,7 @@ function Screen({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-full min-h-[24rem] w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink text-canvas shadow-lift">
+    <div className="flex h-auto min-h-[24rem] w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink text-canvas shadow-lift stage:h-full">
       <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" aria-hidden />
@@ -26,7 +26,7 @@ function Screen({
           Illustrative
         </span>
       </div>
-      <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden p-4 sm:p-6">{children}</div>
+      <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto p-4 sm:p-5">{children}</div>
     </div>
   );
 }
@@ -101,49 +101,129 @@ function PipelineVisual() {
 /* 2. Attribution                                                      */
 /* ------------------------------------------------------------------ */
 
-const tiles = [
-  { k: "NRR", path: "M0 26 L18 22 L34 24 L50 15 L66 17 L84 8 L100 5", color: "#a5b4fc" },
-  { k: "ARR", path: "M0 28 L20 24 L38 20 L56 21 L74 12 L100 6", color: "#5eead4" },
-  { k: "ROAS", path: "M0 14 L16 20 L32 12 L52 18 L70 9 L100 12", color: "#fdba74" },
-  { k: "CPA", path: "M0 8 L20 11 L36 9 L56 17 L76 20 L100 26", color: "#f0abfc" },
+const metrics = [
+  {
+    k: "NRR",
+    name: "Net revenue retention",
+    formula: "(start + expansion − churn) / start",
+    reads: "Did the customers you already had grow, after churn?",
+    direction: "Higher means the book expanded",
+    color: "#a5b4fc",
+    points: [62, 64, 60, 70, 76, 84, 92],
+  },
+  {
+    k: "ARR",
+    name: "Annual recurring revenue",
+    formula: "monthly recurring × 12",
+    reads: "The yearly run-rate finance and sales plan against.",
+    direction: "One book of record",
+    color: "#5eead4",
+    points: [38, 44, 47, 54, 61, 69, 76],
+  },
+  {
+    k: "ROAS",
+    name: "Return on ad spend",
+    formula: "attributed revenue / ad spend",
+    reads: "Revenue each channel touched, per dollar spent.",
+    direction: "Same definition across channels",
+    color: "#fdba74",
+    points: [46, 52, 44, 58, 64, 61, 72],
+  },
+  {
+    k: "CPA",
+    name: "Cost per acquisition",
+    formula: "spend / new accounts won",
+    reads: "What it cost to win the next account.",
+    direction: "Lower means more efficient",
+    color: "#f0abfc",
+    points: [82, 78, 84, 70, 64, 58, 50],
+  },
 ];
+
+function AreaSpark({ points, color, id }: { points: number[]; color: string; id: string }) {
+  const w = 160;
+  const h = 56;
+  const min = Math.min(...points);
+  const max = Math.max(...points);
+  const coords = points.map((p, i) => {
+    const x = (i / (points.length - 1)) * (w - 8) + 4;
+    const y = h - 8 - ((p - min) / (max - min || 1)) * (h - 16);
+    return [x, y] as const;
+  });
+  const line = coords.map(([x, y], i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
+  const area = `${line} L${coords[coords.length - 1][0].toFixed(1)} ${h} L${coords[0][0].toFixed(1)} ${h} Z`;
+  const last = coords[coords.length - 1];
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="mt-2 h-14 w-full" role="img" aria-label="Illustrative trend">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.5" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {[18, 36].map((y) => (
+        <line key={y} x1="4" x2={w - 4} y1={y} y2={y} stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+      ))}
+      <motion.path d={area} fill={`url(#${id})`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.45 }} />
+      <motion.path
+        d={line}
+        fill="none"
+        stroke={color}
+        strokeWidth="2.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1.25, ease }}
+      />
+      <motion.circle cx={last[0]} cy={last[1]} r="3.2" fill={color} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.15, type: "spring", stiffness: 260, damping: 16 }} />
+    </svg>
+  );
+}
 
 function AttributionVisual() {
   return (
-    <Screen title="attribution / revenue">
-      <div className="flex flex-1 flex-col justify-between gap-5">
-        <div>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-white/60">Tracked 2025 revenue</p>
-          <p className="mt-1 font-display text-5xl font-medium leading-none tracking-tight sm:text-6xl">
-            <Counter to={75} prefix="$" suffix="M" duration={1.6} />
+    <Screen title="attribution / metrics">
+      <div className="flex flex-1 flex-col gap-3">
+        <div className="flex items-end justify-between gap-3">
+          <div className="min-w-0">
+            <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-white/55">Same $75M, four questions</p>
+            <p className="mt-1 font-display text-2xl leading-none tracking-tight sm:text-[1.7rem]">
+              <Counter to={75} prefix="$" suffix="M tracked" duration={1.4} />
+            </p>
+          </div>
+          <p className="hidden max-w-[9.5rem] text-right text-[0.68rem] leading-snug text-white/50 sm:block">
+            Shapes illustrate the question. They are not reported results.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          {tiles.map((t, i) => (
-            <motion.div
-              key={t.k}
-              initial={{ opacity: 0, y: 16 }}
+        <div className="grid grid-cols-1 gap-2.5 xs:grid-cols-2">
+          {metrics.map((m, i) => (
+            <motion.article
+              key={m.k}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.12, ease }}
-              className="rounded-2xl border border-white/10 bg-white/[0.05] p-3"
+              transition={{ duration: 0.55, delay: 0.12 + i * 0.08, ease }}
+              className="rounded-2xl border border-white/10 bg-white/[0.045] p-3"
             >
-              <p className="font-mono text-xs font-medium tracking-wider text-white/75">{t.k}</p>
-              <svg viewBox="0 0 100 32" preserveAspectRatio="none" className="mt-2 h-9 w-full" aria-hidden>
-                <motion.path
-                  d={t.path}
-                  fill="none"
-                  stroke={t.color}
-                  strokeWidth={2.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  vectorEffect="non-scaling-stroke"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.4, delay: 0.5 + i * 0.15, ease }}
-                />
-              </svg>
-            </motion.div>
+              <div className="flex items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="font-mono text-[0.68rem] font-semibold tracking-[0.14em]" style={{ color: m.color }}>
+                    {m.k}
+                  </p>
+                  <h4 className="mt-0.5 text-[0.92rem] font-semibold leading-tight">{m.name}</h4>
+                </div>
+              </div>
+              <p className="mt-2 rounded-lg bg-black/30 px-2 py-1 font-mono text-[0.62rem] leading-snug text-white/70">
+                {m.formula}
+              </p>
+              <AreaSpark points={m.points} color={m.color} id={`spark-${m.k}`} />
+              <p className="mt-1.5 text-[0.75rem] leading-snug text-white/75">{m.reads}</p>
+              <p className="mt-1 text-[0.68rem] font-medium leading-snug" style={{ color: m.color }}>
+                {m.direction}
+              </p>
+            </motion.article>
           ))}
         </div>
       </div>

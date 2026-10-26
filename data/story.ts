@@ -239,7 +239,7 @@ export const vibrantScenes: VibrantScene[] = [
     action:
       "Built attribution views on the warehouse that link behavioral touchpoints to revenue, and published them for GTM reviews.",
     result:
-      "About $75M of tracked 2025 revenue is tied to NRR, ARR, ROAS and CPA, so tradeoffs use one definition.",
+      "About $75M of tracked 2025 revenue is read four ways: NRR for the existing book, ARR for the run-rate, ROAS for channel return, and CPA for the cost of a new account.",
     caveat: "Tracked revenue, not incremental revenue created.",
     metric: { value: "$75M", label: "tracked 2025 revenue" },
     tools: ["SQL", "dbt", "Power BI"],
