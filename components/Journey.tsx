@@ -55,39 +55,25 @@ function BeatCard({ beat, index, total }: { beat: JourneyBeat; index: number; to
             <p className="mt-2 text-base font-medium">{beat.company}</p>
             <p className="text-sm text-muted">{beat.location}</p>
 
-            <dl className="mt-8 grid grid-cols-2 gap-4 md:mt-auto md:pt-8">
-              {beat.metrics.map((m) => (
-                <div key={m.label}>
-                  <dt className="sr-only">{m.label}</dt>
-                  <dd>
-                    <span className={`block font-display text-4xl leading-none tracking-tight sm:text-5xl ${a.text}`}>
-                      {m.value}
-                    </span>
-                    <span className="mt-2 block text-sm leading-snug text-muted">{m.label}</span>
-                  </dd>
-                </div>
-              ))}
+            <dl className="mt-8 md:mt-auto md:pt-8">
+              <dt className="sr-only">{beat.metric.label}</dt>
+              <dd>
+                <span className={`block font-display text-5xl leading-none tracking-tight sm:text-6xl ${a.text}`}>
+                  {beat.metric.value}
+                </span>
+                <span className="mt-2 block text-sm leading-snug text-muted">{beat.metric.label}</span>
+              </dd>
             </dl>
           </div>
 
           {/* Right: the scene */}
-          <div>
+          <div className="flex flex-col">
             <p className="font-display text-xl leading-snug tracking-tight sm:text-2xl">{beat.headline}</p>
-            <ul className="mt-6 space-y-4">
-              {beat.bullets.map((b) => (
-                <li key={b} className="flex gap-3 text-[0.98rem] leading-relaxed text-ink-soft">
-                  <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${a.dot}`} aria-hidden />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-            <ul className="mt-7 flex flex-wrap gap-2" aria-label="Tools">
-              {beat.tools.map((t) => (
-                <li key={t} className="chip">
-                  {t}
-                </li>
-              ))}
-            </ul>
+            <p className="mt-5 text-[0.98rem] leading-relaxed text-ink-soft">{beat.result}</p>
+            <p className="mt-6 font-mono text-xs leading-relaxed text-muted md:mt-auto md:pt-6">
+              <span className="sr-only">Tools: </span>
+              {beat.tools.join(" · ")}
+            </p>
           </div>
         </div>
       </motion.article>

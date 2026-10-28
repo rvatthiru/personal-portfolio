@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import ChapterHeading from "@/components/ui/ChapterHeading";
 import Reveal from "@/components/ui/Reveal";
 import { accents } from "@/lib/accent";
-import { toolkit } from "@/data/story";
+import { moreWork, toolkit } from "@/data/story";
 
 function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
   const items = reverse ? [...toolkit.marquee].reverse() : toolkit.marquee;
@@ -46,9 +46,8 @@ export default function Toolkit() {
           kicker="The tools I reach for, and a few short films I made on the side to keep learning."
         />
 
-        <div className="mt-12 space-y-1" role="presentation">
+        <div className="mt-12" role="presentation">
           <MarqueeRow />
-          <MarqueeRow reverse />
         </div>
 
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -76,6 +75,40 @@ export default function Toolkit() {
             );
           })}
         </ul>
+
+        <div className="mt-24">
+          <Reveal>
+            <p className="eyebrow">More at Vibrant America</p>
+            <h3 className="display-md mt-3 max-w-2xl">Other projects behind the main feature.</h3>
+          </Reveal>
+
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {moreWork.map((w, i) => {
+              const a = accents[w.accent];
+              return (
+                <motion.li
+                  key={w.title}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+                  transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="card flex flex-col p-6"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <h4 className="min-w-0 font-display text-xl leading-tight tracking-tight">{w.title}</h4>
+                    <span
+                      className={`shrink-0 rounded-full px-2.5 py-0.5 font-mono text-[0.62rem] font-medium uppercase tracking-[0.14em] ${a.soft} ${a.text}`}
+                    >
+                      {w.status}
+                    </span>
+                  </div>
+                  <p className={`mt-5 font-display text-4xl leading-none tracking-tight ${a.text}`}>{w.stat}</p>
+                  <p className="mt-3 text-[0.92rem] leading-relaxed text-ink-soft">{w.line}</p>
+                </motion.li>
+              );
+            })}
+          </ul>
+        </div>
 
         <div className="mt-24">
           <Reveal>

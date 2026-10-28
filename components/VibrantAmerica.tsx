@@ -10,45 +10,29 @@ import SceneVisual from "@/components/vibrant/Visuals";
 import { accents } from "@/lib/accent";
 import { profile, vibrant, vibrantScenes, type VibrantScene } from "@/data/story";
 
-function SceneText({
-  scene,
-  index,
-  active,
-  onActive,
-}: {
+type SceneTextProps = {
   scene: VibrantScene;
-  index: number;
   active: boolean;
-  onActive: (i: number) => void;
-}) {
-  const ref = useRef<HTMLElement>(null);
+  register: (el: HTMLElement | null) => void;
+};
+
+function SceneText({ scene, active, register }: SceneTextProps) {
   const a = accents[scene.accent];
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) onActive(index);
-      },
-      { rootMargin: "-35% 0px -35% 0px", threshold: 0 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [index, onActive]);
-
   const blocks = [
-    { label: "The problem", body: scene.situation },
-    { label: "What I did", body: scene.action },
-    { label: "The result", body: scene.result },
+    { label: "Problem", body: scene.situation },
+    { label: "Action", body: scene.action },
+    { label: "Result", body: scene.result },
   ];
 
   return (
     <article
-      ref={ref}
-      aria-labelledby={`scene-${scene.id}`}
-      className={`flex items-center py-10 transition-opacity duration-500 stage:min-h-[90vh] stage:py-0 ${
-        active ? "stage:opacity-100" : "stage:opacity-35"
+      ref={register}
+      id={`scene-${scene.id}`}
+      aria-labelledby={`scene-title-${scene.id}`}
+      data-scene={scene.id}
+      className={`flex items-center py-10 transition-opacity duration-500 stage:min-h-[85vh] stage:py-0 ${
+        active ? "stage:opacity-100" : "stage:opacity-30"
       }`}
     >
       <div className="w-full">
@@ -64,7 +48,7 @@ function SceneText({
           </span>
         </div>
 
-        <h3 id={`scene-${scene.id}`} className="display-md mt-5">
+        <h3 id={`scene-title-${scene.id}`} className="display-md mt-5">
           {scene.title}
         </h3>
 
@@ -75,9 +59,9 @@ function SceneText({
           </div>
         </InViewMount>
 
-        <dl className="mt-7 space-y-5">
+        <dl className="mt-7 space-y-4">
           {blocks.map((b) => (
-            <div key={b.label} className="grid gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-4">
+            <div key={b.label} className="grid gap-1 sm:grid-cols-[5.5rem_1fr] sm:gap-4">
               <dt className={`font-mono text-[0.7rem] font-medium uppercase tracking-[0.16em] ${a.text} sm:pt-1`}>
                 {b.label}
               </dt>
@@ -86,14 +70,9 @@ function SceneText({
           ))}
         </dl>
 
-        {scene.caveat && (
-          <p className="mt-5 rounded-xl border border-dashed border-ink/30 bg-paper/70 px-4 py-2.5 text-sm text-muted">
-            <span className="font-semibold text-ink">Fine print: </span>
-            {scene.caveat}
-          </p>
-        )}
+        {scene.caveat && <p className="mt-4 text-sm text-muted">Note: {scene.caveat}</p>}
 
-        <ul className="mt-6 flex flex-wrap gap-2" aria-label="Tools used">
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tools used">
           {scene.tools.map((t) => (
             <li key={t} className="chip">
               {t}
@@ -107,8 +86,50 @@ function SceneText({
 
 export default function VibrantAmerica() {
   const [active, setActive] = useState(0);
+  const sceneEls = useRef<(HTMLElement | null)[]>([]);
   const current = vibrantScenes[active];
   const a = accents[current.accent];
+
+  /**
+   * One scroll-position picker instead of per-scene observers: the active scene is the one
+   * whose box contains the viewport midpoint (or the nearest one when the midpoint is outside
+   * the list). It depends only on where the page is, so scrolling up and down always agree.
+   */
+  useEffect(() => {
+    let frame = 0;
+
+    const pick = () => {
+      frame = 0;
+      const mid = window.innerHeight / 2;
+      let best = 0;
+      let bestDistance = Infinity;
+
+      sceneEls.current.forEach((el, i) => {
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const distance = r.top > mid ? r.top - mid : r.bottom < mid ? mid - r.bottom : 0;
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = i;
+        }
+      });
+
+      setActive((prev) => (prev === best ? prev : best));
+    };
+
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(pick);
+    };
+
+    pick();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
 
   return (
     <section
@@ -133,7 +154,7 @@ export default function VibrantAmerica() {
               aria-hidden
               className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-iris/15 blur-3xl"
             />
-            <div className="relative grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:gap-14">
+            <div className="relative grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-14">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full bg-ink px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-canvas">
                   <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#4ade80]" />
@@ -149,9 +170,6 @@ export default function VibrantAmerica() {
                   <span className="font-medium text-ink">{profile.company}</span>
                 </p>
                 <p className="lede mt-6">{vibrant.summary}</p>
-                <p className="mt-6 border-l-4 border-iris pl-4 font-display text-xl italic leading-snug text-ink-soft sm:text-2xl">
-                  {vibrant.logline}
-                </p>
               </div>
 
               <ul className="grid content-start gap-3 sm:grid-cols-3 lg:grid-cols-1" aria-label="Headline numbers">
@@ -170,12 +188,22 @@ export default function VibrantAmerica() {
         <div className="mt-16 stage:mt-20 stage:grid stage:grid-cols-12 stage:gap-12">
           <div className="stage:col-span-5">
             {vibrantScenes.map((scene, i) => (
-              <SceneText key={scene.id} scene={scene} index={i} active={active === i} onActive={setActive} />
+              <SceneText
+                key={scene.id}
+                scene={scene}
+                active={active === i}
+                register={(el) => {
+                  sceneEls.current[i] = el;
+                }}
+              />
             ))}
           </div>
 
           <div className="hidden stage:col-span-7 stage:block">
-            <div className="sticky top-24 flex h-[calc(100dvh-7.5rem)] max-h-[46rem] flex-col">
+            <div
+              className="sticky top-24 flex h-[calc(100dvh-7.5rem)] max-h-[46rem] flex-col"
+              data-active-scene={current.id}
+            >
               {/* Keyed remount (no exit animation) so rapid scrolling can never leave the stage empty. */}
               <motion.div
                 key={current.id}

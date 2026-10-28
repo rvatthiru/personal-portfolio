@@ -101,7 +101,6 @@ function Poster() {
                     to={stat.value}
                     prefix={stat.prefix}
                     suffix={stat.suffix}
-                    decimals={"decimals" in stat ? stat.decimals : 0}
                     duration={1.2}
                     className="bg-gradient-to-r from-[#a5b4fc] via-[#f0abfc] to-[#fdba74] bg-clip-text text-transparent"
                   />

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Thirunarayanan Raman | Making numbers decisive",
   description:
-    "A career in data told in five chapters: commercial analytics, forecasting, attribution and CRM signals at Vibrant America, and the roles that led there.",
+    "Sales Operations Analyst at Vibrant America: sales cadence, attribution and CRM signals, and the career in data that led there.",
   openGraph: {
     title: "Thirunarayanan Raman | Making numbers decisive",
     description:

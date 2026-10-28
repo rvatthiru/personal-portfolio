@@ -10,6 +10,8 @@ type CounterProps = {
   decimals?: number;
   duration?: number;
   className?: string;
+  /** Re-run the count every time the number scrolls back into view. */
+  replay?: boolean;
 };
 
 export default function Counter({
@@ -19,16 +21,21 @@ export default function Counter({
   decimals = 0,
   duration = 1.8,
   className,
+  replay = false,
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+  const inView = useInView(ref, { once: !replay, margin: "0px 0px -10% 0px" });
   const reduce = useReducedMotion();
   const [value, setValue] = useState(reduce ? to : 0);
 
   useEffect(() => {
-    if (!inView) return;
     if (reduce) {
       setValue(to);
+      return;
+    }
+    if (!inView) {
+      // Leaving the viewport resets the number so the next entry counts up again.
+      if (replay) setValue(0);
       return;
     }
     const controls = animate(0, to, {
@@ -37,12 +44,17 @@ export default function Counter({
       onUpdate: (v) => setValue(v),
     });
     return () => controls.stop();
-  }, [inView, to, duration, reduce]);
+  }, [inView, to, duration, reduce, replay]);
+
+  const text = value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
 
   return (
     <span ref={ref} className={`tabular-nums ${className ?? ""}`}>
       {prefix}
-      {value.toFixed(decimals)}
+      {text}
       {suffix}
     </span>
   );
