@@ -9,7 +9,7 @@
 export const profile = {
   name: "Thirunarayanan Raman",
   initials: "TR",
-  role: "Sales Operations Analyst",
+  role: "Senior Analyst, Sales Strategy & Operations",
   company: "Vibrant America",
   location: "San Jose, CA",
   email: "rvatthiru@gmail.com",
@@ -35,7 +35,7 @@ export const chapters = [
 export const trailer = {
   tagline: "A career in data, told in five chapters.",
   intro:
-    "I run sales operations analytics: the weekly cadence, attribution and CRM signals that sales leaders and reps use to decide.",
+    "I partner with sales leadership on strategy and operations: the weekly forecast, attribution and CRM signals they use to decide.",
   stats: [
     { value: 108, prefix: "$", suffix: "M", label: "2025 revenue, read from one set of numbers" },
     { value: 75, prefix: "$", suffix: "M", label: "2025 revenue traced to marketing touchpoints" },
@@ -57,7 +57,7 @@ export const filmStrip = [
 export const origin = {
   quote: "The work only counts if someone uses it.",
   paragraphs: [
-    "Master's in Business Analytics and AI from UT Dallas, and about five years across analytics and revenue operations. Today I'm a Sales Operations Analyst at Vibrant America, a B2B diagnostics lab, where I own the commercial analytics layer end to end.",
+    "Master's in Business Analytics and AI from UT Dallas, and about five years across analytics and revenue operations. Today I'm a Senior Analyst, Sales Strategy & Operations at Vibrant America, a B2B diagnostics lab, where I own commercial planning with sales leadership.",
     "That means a weekly cadence for the COO, 3 sales directors and 20 reps, attribution on the warehouse, and account priorities that land inside HubSpot.",
   ],
   facts: [
@@ -77,7 +77,7 @@ export type JourneyBeat = {
   company: string;
   location: string;
   headline: string;
-  result: string;
+  bullets: string[];
   tools: string[];
   metric: { value: string; label: string };
   accent: "iris" | "coral" | "lagoon" | "sun";
@@ -92,9 +92,12 @@ export const journey: JourneyBeat[] = [
     company: "Cognizant Technology Solutions",
     location: "India",
     headline: "Learned that a dashboard is only the start of an answer.",
-    result:
-      "Found 12% higher churn in underpriced regions, and automated executive reporting from Hadoop into Power BI.",
-    tools: ["Power BI", "SQL", "Hadoop"],
+    bullets: [
+      "Showed 12% higher churn in underpriced regions and quantified the revenue risk for pricing and retention.",
+      "Cut high-priority SLA breaches 40% through ServiceNow root-cause analysis and a process redesign.",
+      "Automated executive reporting from Hadoop into Power BI, cutting leadership time-to-insight 20%.",
+    ],
+    tools: ["Power BI", "SQL", "Hadoop", "ServiceNow"],
     metric: { value: "20%", label: "faster time-to-insight for leaders" },
     accent: "iris",
   },
@@ -102,12 +105,15 @@ export const journey: JourneyBeat[] = [
     kind: "role",
     act: "The builder",
     period: "Apr 2022 – Jul 2023",
-    role: "Associate Analyst II",
+    role: "Data Analyst – Vendor Journey",
     company: "Newell Brands",
     location: "India",
     headline: "Turned a 100+ partner book into a ranked, actionable list.",
-    result:
-      "Focused coverage on top partners and automated onboarding approvals in Power Platform, cutting onboarding time 50%.",
+    bullets: [
+      "Built partner scorecards in Power BI across 100+ accounts so managers had one ranked book of business. On-time compliance rose 20%.",
+      "Drove $2.5M in annual savings by focusing coverage on top partners instead of the long tail.",
+      "Cut partner onboarding time 50% by automating request and approval workflows in Power Platform.",
+    ],
     tools: ["Power BI", "Power Apps", "SQL", "Python"],
     metric: { value: "$2.5M", label: "annual savings from focused coverage" },
     accent: "coral",
@@ -120,8 +126,10 @@ export const journey: JourneyBeat[] = [
     company: "The University of Texas at Dallas",
     location: "Richardson, TX",
     headline: "Went back to school to learn the machine learning behind the dashboards.",
-    result:
-      "Coursework in predictive analytics, big data, A/B testing and LLMs, plus COSMO.ai, a chatbot for the UT Dallas website.",
+    bullets: [
+      "GPA 3.97. Coursework in predictive analytics, big data, machine learning, A/B testing and LLMs.",
+      "Built COSMO.ai, a chatbot for the UT Dallas website.",
+    ],
     tools: ["Machine learning", "A/B testing", "LLMs"],
     metric: { value: "3.97", label: "GPA, scholar with high distinction" },
     accent: "sun",
@@ -134,8 +142,10 @@ export const journey: JourneyBeat[] = [
     company: "UST",
     location: "Aliso Viejo, CA",
     headline: "Pointed forecasting and lead scoring at go-to-market planning.",
-    result:
-      "Built a demand forecast (Prophet, RMSE 2.68) for planning, and signal-based scoring that cut CAC $300 per user.",
+    bullets: [
+      "Built a demand forecast (Prophet, RMSE 2.68) that finance and go-to-market leads used for planning and targets.",
+      "Built signal-based scoring and routing for SDR and AE conversion: conversion up 6%, CAC down $300 per user.",
+    ],
     tools: ["Prophet", "Python", "SQL"],
     metric: { value: "+6%", label: "SDR and AE conversion" },
     accent: "lagoon",
@@ -148,8 +158,10 @@ export const journey: JourneyBeat[] = [
     company: "Federal Home Loan Bank of Dallas",
     location: "Irving, TX",
     headline: "Brought analytics into sales coverage and loan operations.",
-    result:
-      "Scored quiet accounts in an Excel, SQL and Power BI model, and automated intake-to-payment workflows (delays down 40%).",
+    bullets: [
+      "Built an Excel, SQL and Power BI utilization model that scored quiet accounts and surfaced $15M+ in pipeline for sales outreach.",
+      "Automated intake-to-payment workflows. Processing delays fell 40%, and on-time disbursements rose 60%.",
+    ],
     tools: ["Excel", "SQL", "Power BI", "Power Platform"],
     metric: { value: "$15M+", label: "pipeline surfaced for outreach" },
     accent: "iris",
@@ -160,10 +172,17 @@ export const journey: JourneyBeat[] = [
 
 export const vibrant = {
   period: "Aug 2025 – Present",
-  role: "Sales Operations Analyst",
+  role: "Senior Analyst, Sales Strategy & Operations",
   location: "San Jose, CA",
   summary:
-    "I own sales operations analytics for a B2B diagnostics lab: attribution, the weekly sales cadence, customer health signals in HubSpot and self-serve answers in Slack.",
+    "I partner with sales leadership on planning, the weekly forecast, and where to spend. The warehouse, the CRM and Slack all read the same numbers.",
+  bullets: [
+    "Partnered with the COO and 3 sales directors on planning for a $108M (2025) and $75M (2026) business, splitting growth into volume, average order value and new logos.",
+    "Owned the weekly forecast: pipeline and revenue in SQL, Excel and Power BI, with P75 baselines and one narrative for leadership and 20 reps.",
+    "Linked about $75M of tracked 2025 revenue to NRR, ARR, ROAS and CPA so leaders could reallocate spend by tradeoff.",
+    "Put Protect, Grow and Re-engage priorities into HubSpot with Hightouch, so reps worked from warehouse definitions.",
+    "Scaled self-serve analytics with a Cube-grounded Slack agent (about 50% fewer tokens per query, 25+ people), and co-authored data contracts after legacy models had obscured $2.5M.",
+  ],
   chips: [
     { value: "$108M", label: "2025 revenue" },
     { value: "$75M", label: "2026 revenue, Jan to Aug" },

@@ -170,6 +170,14 @@ export default function VibrantAmerica() {
                   <span className="font-medium text-ink">{profile.company}</span>
                 </p>
                 <p className="lede mt-6">{vibrant.summary}</p>
+                <ul className="mt-6 space-y-3">
+                  {vibrant.bullets.map((b) => (
+                    <li key={b} className="flex gap-3 text-[0.98rem] leading-relaxed text-ink-soft">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-iris" aria-hidden />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <ul className="grid content-start gap-3 sm:grid-cols-3 lg:grid-cols-1" aria-label="Headline numbers">

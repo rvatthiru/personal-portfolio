@@ -35,4 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# separate repo cloned locally; not part of this site
+/job-hunt-portfolio/
+
 

@@ -18,7 +18,7 @@ function BeatCard({ beat, index, total }: { beat: JourneyBeat; index: number; to
   return (
     <div
       ref={ref}
-      className={`tall:sticky ${index === total - 1 ? "" : "mb-8 tall:mb-[16vh]"}`}
+      className={`tall:sticky ${index === total - 1 ? "" : "mb-8 tall:mb-[48vh]"}`}
       style={{ top: `calc(5.75rem + ${index * 1.1}rem)` }}
     >
       <motion.article
@@ -69,7 +69,14 @@ function BeatCard({ beat, index, total }: { beat: JourneyBeat; index: number; to
           {/* Right: the scene */}
           <div className="flex flex-col">
             <p className="font-display text-xl leading-snug tracking-tight sm:text-2xl">{beat.headline}</p>
-            <p className="mt-5 text-[0.98rem] leading-relaxed text-ink-soft">{beat.result}</p>
+            <ul className="mt-5 space-y-3">
+              {beat.bullets.map((b) => (
+                <li key={b} className="flex gap-3 text-[0.98rem] leading-relaxed text-ink-soft">
+                  <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${a.dot}`} aria-hidden />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
             <p className="mt-6 font-mono text-xs leading-relaxed text-muted md:mt-auto md:pt-6">
               <span className="sr-only">Tools: </span>
               {beat.tools.join(" · ")}
