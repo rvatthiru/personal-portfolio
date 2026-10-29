@@ -1,5 +1,5 @@
 /**
- * All of the story lives here. Edit this file to change copy, numbers and links;
+ * All of the content lives here. Edit this file to change copy, numbers and links;
  * the components only render what they find.
  *
  * Numbers come from the job-hunt-portfolio works inventory (canonical, verified figures).
@@ -21,161 +21,42 @@ export const profile = {
     "https://drive.google.com/uc?export=view&id=18ECZkFHFAYhSf_fsIHOaJPfECAxrlJII",
 };
 
+/** Navigation, in page order. */
 export const chapters = [
-  { id: "origin", no: "01", label: "Origin" },
-  { id: "journey", no: "02", label: "Journey" },
-  { id: "vibrant", no: "03", label: "Vibrant America" },
-  { id: "impact", no: "04", label: "Impact" },
-  { id: "toolkit", no: "05", label: "Toolkit" },
-  { id: "contact", no: "06", label: "Contact" },
+  { id: "vibrant", label: "Vibrant America" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
 ] as const;
 
-/* ---------- Title sequence ---------- */
+/* ---------- Hero ---------- */
 
-export const trailer = {
-  tagline: "A career in data, told in five chapters.",
-  intro:
-    "I partner with sales leadership on strategy and operations: the weekly forecast, attribution and CRM signals they use to decide.",
+export const hero = {
+  pitch:
+    "I partner with sales leadership on planning, the weekly forecast and where to spend. The warehouse, the CRM and Slack all read the same numbers.",
   stats: [
-    { value: 108, prefix: "$", suffix: "M", label: "2025 revenue, read from one set of numbers" },
-    { value: 75, prefix: "$", suffix: "M", label: "2025 revenue traced to marketing touchpoints" },
-    { value: 25, prefix: "", suffix: "+", label: "people self-serving analytics in Slack" },
+    { value: 108, prefix: "$", suffix: "M", decimals: 0, label: "2025 revenue on one stack" },
+    { value: 75, prefix: "$", suffix: "M", decimals: 0, label: "2025 revenue traced to touchpoints" },
+    { value: 4.4, prefix: "", suffix: "x", decimals: 1, label: "Elite vs Low customer LTV by order 10" },
+    { value: 25, prefix: "", suffix: "+", decimals: 0, label: "people self-serving in Slack" },
+  ],
+  chips: [
+    "About 5 years in analytics",
+    "M.S. Business Analytics and AI, UT Dallas (GPA 3.97)",
+    "Microsoft Data Analyst Associate",
   ],
 };
 
-export const filmStrip = [
-  { year: "2020", name: "Cognizant" },
-  { year: "2022", name: "Newell Brands" },
-  { year: "2023", name: "UT Dallas" },
-  { year: "2024", name: "UST" },
-  { year: "2025", name: "FHLB Dallas" },
-  { year: "2025", name: "Vibrant America" },
-];
-
-/* ---------- Chapter 1: Origin ---------- */
-
-export const origin = {
-  quote: "The work only counts if someone uses it.",
-  paragraphs: [
-    "Master's in Business Analytics and AI from UT Dallas, and about five years across analytics and revenue operations. Today I'm a Senior Analyst, Sales Strategy & Operations at Vibrant America, a B2B diagnostics lab, where I own commercial planning with sales leadership.",
-    "That means a weekly cadence for the COO, 3 sales directors and 20 reps, attribution on the warehouse, and account priorities that land inside HubSpot.",
-  ],
-  facts: [
-    { k: "Since", v: "2020", note: "analytics and revenue operations" },
-    { k: "Education", v: "M.S. UTD", note: "Business Analytics and AI (STEM), GPA 3.97" },
-    { k: "Certified", v: "Microsoft", note: "Data Analyst Associate" },
-  ],
-};
-
-/* ---------- Chapter 2: Journey ---------- */
-
-export type JourneyBeat = {
-  kind: "role" | "intermission";
-  act: string;
-  period: string;
-  role: string;
-  company: string;
-  location: string;
-  headline: string;
-  bullets: string[];
-  tools: string[];
-  metric: { value: string; label: string };
-  accent: "iris" | "coral" | "lagoon" | "sun";
-};
-
-export const journey: JourneyBeat[] = [
-  {
-    kind: "role",
-    act: "The apprentice",
-    period: "Aug 2020 – Apr 2022",
-    role: "Programmer Analyst",
-    company: "Cognizant Technology Solutions",
-    location: "India",
-    headline: "Learned that a dashboard is only the start of an answer.",
-    bullets: [
-      "Showed 12% higher churn in underpriced regions and quantified the revenue risk for pricing and retention.",
-      "Cut high-priority SLA breaches 40% through ServiceNow root-cause analysis and a process redesign.",
-      "Automated executive reporting from Hadoop into Power BI, cutting leadership time-to-insight 20%.",
-    ],
-    tools: ["Power BI", "SQL", "Hadoop", "ServiceNow"],
-    metric: { value: "20%", label: "faster time-to-insight for leaders" },
-    accent: "iris",
-  },
-  {
-    kind: "role",
-    act: "The builder",
-    period: "Apr 2022 – Jul 2023",
-    role: "Data Analyst – Vendor Journey",
-    company: "Newell Brands",
-    location: "India",
-    headline: "Turned a 100+ partner book into a ranked, actionable list.",
-    bullets: [
-      "Built partner scorecards in Power BI across 100+ accounts so managers had one ranked book of business. On-time compliance rose 20%.",
-      "Drove $2.5M in annual savings by focusing coverage on top partners instead of the long tail.",
-      "Cut partner onboarding time 50% by automating request and approval workflows in Power Platform.",
-    ],
-    tools: ["Power BI", "Power Apps", "SQL", "Python"],
-    metric: { value: "$2.5M", label: "annual savings from focused coverage" },
-    accent: "coral",
-  },
-  {
-    kind: "intermission",
-    act: "Intermission",
-    period: "Aug 2023 – May 2025",
-    role: "M.S. in Business Analytics and AI",
-    company: "The University of Texas at Dallas",
-    location: "Richardson, TX",
-    headline: "Went back to school to learn the machine learning behind the dashboards.",
-    bullets: [
-      "GPA 3.97. Coursework in predictive analytics, big data, machine learning, A/B testing and LLMs.",
-      "Built COSMO.ai, a chatbot for the UT Dallas website.",
-    ],
-    tools: ["Machine learning", "A/B testing", "LLMs"],
-    metric: { value: "3.97", label: "GPA, scholar with high distinction" },
-    accent: "sun",
-  },
-  {
-    kind: "role",
-    act: "The scientist",
-    period: "May 2024 – Aug 2024",
-    role: "Data Science Intern",
-    company: "UST",
-    location: "Aliso Viejo, CA",
-    headline: "Pointed forecasting and lead scoring at go-to-market planning.",
-    bullets: [
-      "Built a demand forecast (Prophet, RMSE 2.68) that finance and go-to-market leads used for planning and targets.",
-      "Built signal-based scoring and routing for SDR and AE conversion: conversion up 6%, CAC down $300 per user.",
-    ],
-    tools: ["Prophet", "Python", "SQL"],
-    metric: { value: "+6%", label: "SDR and AE conversion" },
-    accent: "lagoon",
-  },
-  {
-    kind: "role",
-    act: "The operator",
-    period: "Jan 2025 – May 2025",
-    role: "Business Intelligence Intern",
-    company: "Federal Home Loan Bank of Dallas",
-    location: "Irving, TX",
-    headline: "Brought analytics into sales coverage and loan operations.",
-    bullets: [
-      "Built an Excel, SQL and Power BI utilization model that scored quiet accounts and surfaced $15M+ in pipeline for sales outreach.",
-      "Automated intake-to-payment workflows. Processing delays fell 40%, and on-time disbursements rose 60%.",
-    ],
-    tools: ["Excel", "SQL", "Power BI", "Power Platform"],
-    metric: { value: "$15M+", label: "pipeline surfaced for outreach" },
-    accent: "iris",
-  },
-];
-
-/* ---------- Chapter 3: Vibrant America ---------- */
+/* ---------- Vibrant America ---------- */
 
 export const vibrant = {
   period: "Aug 2025 – Present",
   role: "Senior Analyst, Sales Strategy & Operations",
   location: "San Jose, CA",
+  context: "B2B diagnostics lab · 12K customers · 10.9K clinics",
   summary:
-    "I partner with sales leadership on planning, the weekly forecast, and where to spend. The warehouse, the CRM and Slack all read the same numbers.",
+    "I partner with sales leadership on planning, the weekly forecast and where to spend. The warehouse, the CRM and Slack all read the same numbers.",
   bullets: [
     "Partnered with the COO and 3 sales directors on planning for a $108M (2025) and $75M (2026) business, splitting growth into volume, average order value and new logos.",
     "Owned the weekly forecast: pipeline and revenue in SQL, Excel and Power BI, with P75 baselines and one narrative for leadership and 20 reps.",
@@ -183,13 +64,6 @@ export const vibrant = {
     "Put Protect, Grow and Re-engage priorities into HubSpot with Hightouch, so reps worked from warehouse definitions.",
     "Scaled self-serve analytics with a Cube-grounded Slack agent (about 50% fewer tokens per query, 25+ people), and co-authored data contracts after legacy models had obscured $2.5M.",
   ],
-  chips: [
-    { value: "$108M", label: "2025 revenue" },
-    { value: "$75M", label: "2026 revenue, Jan to Aug" },
-    { value: "12K", label: "customers across 10.9K clinics" },
-  ],
-  closing:
-    "Sales, marketing and finance now argue from the same numbers, and those numbers show up where the work happens.",
 };
 
 export type VibrantSceneId =
@@ -203,7 +77,8 @@ export type VibrantSceneId =
 
 export type VibrantScene = {
   id: VibrantSceneId;
-  act: string;
+  /** Short label used on the tab. */
+  tab: string;
   title: string;
   situation: string;
   action: string;
@@ -217,7 +92,7 @@ export type VibrantScene = {
 export const vibrantScenes: VibrantScene[] = [
   {
     id: "foundation",
-    act: "Scene 1",
+    tab: "Foundation",
     title: "One source of truth",
     situation:
       "Commercial reporting had no shared definitions and broke whenever a source schema changed.",
@@ -231,7 +106,7 @@ export const vibrantScenes: VibrantScene[] = [
   },
   {
     id: "attribution",
-    act: "Scene 2",
+    tab: "Attribution",
     title: "Where did the revenue come from?",
     situation: "Channel spend was judged on clicks, not on the revenue each touchpoint led to.",
     action:
@@ -245,7 +120,7 @@ export const vibrantScenes: VibrantScene[] = [
   },
   {
     id: "diagnosis",
-    act: "Scene 3",
+    tab: "Diagnosis",
     title: "Growth quietly changed shape",
     situation: "H1 looked healthy on revenue, but nobody could say what was driving it.",
     action:
@@ -259,7 +134,7 @@ export const vibrantScenes: VibrantScene[] = [
   },
   {
     id: "crm",
-    act: "Scene 4",
+    tab: "CRM",
     title: "From warehouse to workflow",
     situation: "Warehouse truth never reached the reps who had to act on it.",
     action:
@@ -271,7 +146,7 @@ export const vibrantScenes: VibrantScene[] = [
   },
   {
     id: "cadence",
-    act: "Scene 5",
+    tab: "Cadence",
     title: "Every Monday, same numbers",
     situation:
       "Leaders got one-off spreadsheets with different baselines, and year-over-year views broke after the February 2026 pricing change.",
@@ -284,7 +159,7 @@ export const vibrantScenes: VibrantScene[] = [
   },
   {
     id: "slack",
-    act: "Scene 6",
+    tab: "Slack AI",
     title: "Ask, don't ticket",
     situation: "Leaders waited on analysts for questions the warehouse could already answer.",
     action:
@@ -296,7 +171,7 @@ export const vibrantScenes: VibrantScene[] = [
   },
   {
     id: "alerts",
-    act: "Scene 7",
+    tab: "Lab alerts",
     title: "Catch it before it slips",
     situation: "Stuck samples and skipped runs in two clinical labs had no automatic alert.",
     action:
@@ -404,21 +279,96 @@ export const sceneData = {
   },
 } as const;
 
-/* ---------- Chapter 4: Impact ---------- */
+/* ---------- Experience (most recent first) ---------- */
 
-export const impact = {
-  title: "The highlight reel",
-  lede: "Four numbers from Vibrant America, each tied to a decision someone made because of it.",
-  counters: [
-    { value: 75, prefix: "$", suffix: "M", label: "2025 revenue traced to marketing touchpoints", where: "Attribution", accent: "coral" },
-    { value: 4.4, prefix: "", suffix: "x", decimals: 1, label: "lifetime value of Elite vs Low early spenders by order 10", where: "Customer value", accent: "iris" },
-    { value: 25, prefix: "", suffix: "+", label: "people self-serving analytics in Slack", where: "Self-serve AI", accent: "lagoon" },
-    { value: 44, prefix: "-", suffix: "h", label: "lab receive-to-approve P75, about 20% faster", where: "Operations", accent: "sun" },
-  ] as const,
-  fineprint: "Tracked revenue is not incremental revenue. The lab result compares before and after windows.",
+export type Role = {
+  kind: "role" | "education";
+  period: string;
+  role: string;
+  company: string;
+  location: string;
+  bullets: string[];
+  tools: string[];
+  metric: { value: string; label: string };
+  accent: "iris" | "coral" | "lagoon" | "sun";
 };
 
-/* ---------- Chapter 5: Toolkit ---------- */
+export const experience: Role[] = [
+  {
+    kind: "role",
+    period: "Jan 2025 – May 2025",
+    role: "Business Intelligence Intern",
+    company: "Federal Home Loan Bank of Dallas",
+    location: "Irving, TX",
+    bullets: [
+      "Built an Excel, SQL and Power BI utilization model that scored quiet accounts and surfaced $15M+ in pipeline for sales outreach.",
+      "Automated intake-to-payment workflows. Processing delays fell 40%, and on-time disbursements rose 60%.",
+    ],
+    tools: ["Excel", "SQL", "Power BI", "Power Platform"],
+    metric: { value: "$15M+", label: "pipeline surfaced" },
+    accent: "iris",
+  },
+  {
+    kind: "education",
+    period: "Aug 2023 – May 2025",
+    role: "M.S. in Business Analytics and AI",
+    company: "The University of Texas at Dallas",
+    location: "Richardson, TX",
+    bullets: [
+      "GPA 3.97. Coursework in predictive analytics, big data, machine learning, A/B testing and LLMs.",
+      "Built COSMO.ai, a chatbot for the UT Dallas website.",
+    ],
+    tools: ["Machine learning", "A/B testing", "LLMs"],
+    metric: { value: "3.97", label: "GPA" },
+    accent: "sun",
+  },
+  {
+    kind: "role",
+    period: "May 2024 – Aug 2024",
+    role: "Data Science Intern",
+    company: "UST",
+    location: "Aliso Viejo, CA",
+    bullets: [
+      "Built a demand forecast (Prophet, RMSE 2.68) that finance and go-to-market leads used for planning and targets.",
+      "Built signal-based scoring and routing for SDR and AE conversion: conversion up 6%, CAC down $300 per user.",
+    ],
+    tools: ["Prophet", "Python", "SQL"],
+    metric: { value: "+6%", label: "SDR and AE conversion" },
+    accent: "lagoon",
+  },
+  {
+    kind: "role",
+    period: "Apr 2022 – Jul 2023",
+    role: "Data Analyst – Vendor Journey",
+    company: "Newell Brands",
+    location: "India",
+    bullets: [
+      "Built partner scorecards in Power BI across 100+ accounts so managers had one ranked book of business. On-time compliance rose 20%.",
+      "Drove $2.5M in annual savings by focusing coverage on top partners instead of the long tail.",
+      "Cut partner onboarding time 50% by automating request and approval workflows in Power Platform.",
+    ],
+    tools: ["Power BI", "Power Apps", "SQL", "Python"],
+    metric: { value: "$2.5M", label: "annual savings" },
+    accent: "coral",
+  },
+  {
+    kind: "role",
+    period: "Aug 2020 – Apr 2022",
+    role: "Programmer Analyst",
+    company: "Cognizant Technology Solutions",
+    location: "India",
+    bullets: [
+      "Showed 12% higher churn in underpriced regions and quantified the revenue risk for pricing and retention.",
+      "Cut high-priority SLA breaches 40% through ServiceNow root-cause analysis and a process redesign.",
+      "Automated executive reporting from Hadoop into Power BI, cutting leadership time-to-insight 20%.",
+    ],
+    tools: ["Power BI", "SQL", "Hadoop", "ServiceNow"],
+    metric: { value: "20%", label: "faster time-to-insight" },
+    accent: "iris",
+  },
+];
+
+/* ---------- Projects ---------- */
 
 export type MoreWork = {
   title: string;
@@ -473,61 +423,48 @@ export const moreWork: MoreWork[] = [
   },
 ];
 
-export const toolkit = {
-  groups: [
-    {
-      name: "Revenue analytics",
-      accent: "iris",
-      items: ["Attribution", "Forecasting", "Pipeline health", "Excel"],
-    },
-    {
-      name: "Data stack",
-      accent: "coral",
-      items: ["SQL", "Python", "dbt", "Airbyte", "BigQuery", "ClickHouse"],
-    },
-    {
-      name: "CRM and BI",
-      accent: "lagoon",
-      items: ["HubSpot", "Hightouch", "Power BI", "Cube.js"],
-    },
-    {
-      name: "AI and ML",
-      accent: "sun",
-      items: ["Viktor AI", "Prophet", "XGBoost", "LLMs", "Cursor"],
-    },
-  ] as const,
-  marquee: [
-    "SQL", "Python", "dbt", "Airbyte", "ClickHouse", "BigQuery", "Cube.js", "Power BI",
-    "HubSpot", "Hightouch", "Airflow", "Excel", "Prophet", "XGBoost", "Databricks",
-  ],
-  sideQuests: [
-    {
-      title: "COSMO.ai",
-      subtitle: "Chatbot for the UT Dallas website",
-      metric: { value: "87%", label: "answer accuracy" },
-      body: "A context-aware assistant that answers student questions on compliance, programs and policies.",
-      tools: ["Mistral AI", "LlamaIndex", "FastAPI"],
-    },
-    {
-      title: "SMART Inventory",
-      subtitle: "Demand forecasting and inventory optimization",
-      metric: { value: "7.5%", label: "less excess inventory" },
-      body: "SARIMAX forecasting (20% better accuracy) with EOQ optimization to cut carrying costs.",
-      tools: ["SARIMAX", "Python", "EOQ"],
-    },
-    {
-      title: "Cirrhosis outcomes",
-      subtitle: "Multi-class prediction on patient data",
-      metric: { value: "83%", label: "model accuracy" },
-      body: "An XGBoost model on Databricks with MLflow tracking, monitored through automated pipelines.",
-      tools: ["XGBoost", "Databricks", "MLflow"],
-    },
-  ],
-};
+export const sideProjects = [
+  {
+    title: "COSMO.ai",
+    subtitle: "Chatbot for the UT Dallas website",
+    metric: { value: "87%", label: "answer accuracy" },
+    tools: ["Mistral AI", "LlamaIndex", "FastAPI"],
+  },
+  {
+    title: "SMART Inventory",
+    subtitle: "Demand forecasting and inventory optimization",
+    metric: { value: "7.5%", label: "less excess inventory" },
+    tools: ["SARIMAX", "Python", "EOQ"],
+  },
+  {
+    title: "Cirrhosis outcomes",
+    subtitle: "Multi-class prediction on patient data",
+    metric: { value: "83%", label: "model accuracy" },
+    tools: ["XGBoost", "Databricks", "MLflow"],
+  },
+];
 
-/* ---------- Credits ---------- */
+/* ---------- Skills ---------- */
 
-export const credits = {
-  title: "Roll credits, or start the sequel.",
-  lede: "I'm always open to interesting projects, roles and conversations about turning messy data into decisions.",
-};
+export const skills = [
+  {
+    name: "Revenue analytics",
+    accent: "iris",
+    items: ["Attribution", "Forecasting", "Pipeline health", "Excel"],
+  },
+  {
+    name: "Data stack",
+    accent: "coral",
+    items: ["SQL", "Python", "dbt", "Airbyte", "BigQuery", "ClickHouse"],
+  },
+  {
+    name: "CRM and BI",
+    accent: "lagoon",
+    items: ["HubSpot", "Hightouch", "Power BI", "Cube.js"],
+  },
+  {
+    name: "AI and ML",
+    accent: "sun",
+    items: ["Viktor AI", "Prophet", "XGBoost", "LLMs", "Cursor"],
+  },
+] as const;

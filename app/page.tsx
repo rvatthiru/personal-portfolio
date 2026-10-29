@@ -1,30 +1,28 @@
-import Credits from "@/components/Credits";
-import Impact from "@/components/Impact";
-import Intro from "@/components/Intro";
-import Journey from "@/components/Journey";
+import Contact from "@/components/Contact";
+import Experience from "@/components/Experience";
+import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import Origin from "@/components/Origin";
-import Toolkit from "@/components/Toolkit";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
 import VibrantAmerica from "@/components/VibrantAmerica";
 
 export default function Home() {
   return (
     <>
       <a
-        href="#origin"
+        href="#vibrant"
         className="sr-only z-[80] rounded-full bg-ink px-4 py-2 text-canvas focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
-        Skip to the story
+        Skip to Vibrant America
       </a>
       <Navbar />
       <main>
-        <Intro />
-        <Origin />
-        <Journey />
+        <Hero />
         <VibrantAmerica />
-        <Impact />
-        <Toolkit />
-        <Credits />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
       </main>
     </>
   );

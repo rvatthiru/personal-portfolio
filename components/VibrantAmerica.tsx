@@ -1,23 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, MapPin } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import ChapterHeading from "@/components/ui/ChapterHeading";
-import InViewMount from "@/components/ui/InViewMount";
+import { MapPin } from "lucide-react";
+import { useRef, useState } from "react";
 import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import SceneVisual from "@/components/vibrant/Visuals";
 import { accents } from "@/lib/accent";
-import { profile, vibrant, vibrantScenes, type VibrantScene } from "@/data/story";
+import { vibrant, vibrantScenes } from "@/data/story";
 
-type SceneTextProps = {
-  scene: VibrantScene;
-  active: boolean;
-  register: (el: HTMLElement | null) => void;
-};
-
-function SceneText({ scene, active, register }: SceneTextProps) {
+export default function VibrantAmerica() {
+  const [active, setActive] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const scene = vibrantScenes[active];
   const a = accents[scene.accent];
+
+  const select = (index: number, focus = false) => {
+    const next = (index + vibrantScenes.length) % vibrantScenes.length;
+    setActive(next);
+    if (focus) tabRefs.current[next]?.focus();
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        e.preventDefault();
+        select(active + 1, true);
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        e.preventDefault();
+        select(active - 1, true);
+        break;
+      case "Home":
+        e.preventDefault();
+        select(0, true);
+        break;
+      case "End":
+        e.preventDefault();
+        select(vibrantScenes.length - 1, true);
+        break;
+    }
+  };
 
   const blocks = [
     { label: "Problem", body: scene.situation },
@@ -26,229 +51,131 @@ function SceneText({ scene, active, register }: SceneTextProps) {
   ];
 
   return (
-    <article
-      ref={register}
-      id={`scene-${scene.id}`}
-      aria-labelledby={`scene-title-${scene.id}`}
-      data-scene={scene.id}
-      className={`flex items-center py-10 transition-opacity duration-500 stage:min-h-[85vh] stage:py-0 ${
-        active ? "stage:opacity-100" : "stage:opacity-30"
-      }`}
-    >
-      <div className="w-full">
-        <div className="flex flex-wrap items-center gap-3">
-          <span
-            className={`rounded-full px-3 py-1 font-mono text-[0.68rem] font-medium uppercase tracking-[0.16em] ${a.soft} ${a.text}`}
-          >
-            {scene.act}
-          </span>
-          <span className="inline-flex items-baseline gap-2 rounded-full border border-line bg-paper px-3 py-1">
-            <span className="font-display text-lg font-semibold leading-none">{scene.metric.value}</span>
-            <span className="text-xs text-muted">{scene.metric.label}</span>
-          </span>
-        </div>
-
-        <h3 id={`scene-title-${scene.id}`} className="display-md mt-5">
-          {scene.title}
-        </h3>
-
-        {/* Inline visual for screens where the sticky stage is not shown. */}
-        <InViewMount className="mt-6 min-h-[24rem] stage:hidden">
-          <div className="h-full min-h-[24rem]">
-            <SceneVisual id={scene.id} />
-          </div>
-        </InViewMount>
-
-        <dl className="mt-7 space-y-4">
-          {blocks.map((b) => (
-            <div key={b.label} className="grid gap-1 sm:grid-cols-[5.5rem_1fr] sm:gap-4">
-              <dt className={`font-mono text-[0.7rem] font-medium uppercase tracking-[0.16em] ${a.text} sm:pt-1`}>
-                {b.label}
-              </dt>
-              <dd className="text-[0.98rem] leading-relaxed text-ink-soft">{b.body}</dd>
-            </div>
-          ))}
-        </dl>
-
-        {scene.caveat && <p className="mt-4 text-sm text-muted">Note: {scene.caveat}</p>}
-
-        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tools used">
-          {scene.tools.map((t) => (
-            <li key={t} className="chip">
-              {t}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </article>
-  );
-}
-
-export default function VibrantAmerica() {
-  const [active, setActive] = useState(0);
-  const sceneEls = useRef<(HTMLElement | null)[]>([]);
-  const current = vibrantScenes[active];
-  const a = accents[current.accent];
-
-  /**
-   * One scroll-position picker instead of per-scene observers: the active scene is the one
-   * whose box contains the viewport midpoint (or the nearest one when the midpoint is outside
-   * the list). It depends only on where the page is, so scrolling up and down always agree.
-   */
-  useEffect(() => {
-    let frame = 0;
-
-    const pick = () => {
-      frame = 0;
-      const mid = window.innerHeight / 2;
-      let best = 0;
-      let bestDistance = Infinity;
-
-      sceneEls.current.forEach((el, i) => {
-        if (!el) return;
-        const r = el.getBoundingClientRect();
-        const distance = r.top > mid ? r.top - mid : r.bottom < mid ? mid - r.bottom : 0;
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          best = i;
-        }
-      });
-
-      setActive((prev) => (prev === best ? prev : best));
-    };
-
-    const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(pick);
-    };
-
-    pick();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    return () => {
-      if (frame) cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-    };
-  }, []);
-
-  return (
-    <section
-      id="vibrant"
-      className="section-y relative bg-gradient-to-b from-transparent via-iris-soft/60 to-transparent"
-    >
+    <section id="vibrant" className="section-y relative">
       <div className="container-x">
-        <ChapterHeading
-          no="03"
-          label="The main feature"
-          title={
-            <>
-              Vibrant America: <span className="gradient-text italic">one set of numbers.</span>
-            </>
-          }
-        />
+        <SectionHeading eyebrow="Current role" title="Vibrant America" />
 
-        {/* Title card for the feature presentation */}
-        <Reveal className="mt-12">
-          <div className="card relative overflow-hidden p-6 sm:p-10">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-iris/15 blur-3xl"
-            />
-            <div className="relative grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-14">
-              <div>
-                <span className="inline-flex items-center gap-2 rounded-full bg-ink px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-canvas">
-                  <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#4ade80]" />
-                  Now showing
-                </span>
-                <h3 className="display-md mt-5">{vibrant.role}</h3>
-                <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
+        {/* Role card */}
+        <Reveal className="mt-6">
+          <div className="card p-5 sm:p-7">
+            <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
+              <div className="min-w-0">
+                <h3 className="font-display text-2xl leading-tight tracking-tight sm:text-3xl">{vibrant.role}</h3>
+                <p className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
                   <span className="font-mono">{vibrant.period}</span>
                   <span className="inline-flex items-center gap-1.5">
                     <MapPin className="h-3.5 w-3.5" aria-hidden />
                     {vibrant.location}
                   </span>
-                  <span className="font-medium text-ink">{profile.company}</span>
+                  <span>{vibrant.context}</span>
                 </p>
-                <p className="lede mt-6">{vibrant.summary}</p>
-                <ul className="mt-6 space-y-3">
-                  {vibrant.bullets.map((b) => (
-                    <li key={b} className="flex gap-3 text-[0.98rem] leading-relaxed text-ink-soft">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-iris" aria-hidden />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-
-              <ul className="grid content-start gap-3 sm:grid-cols-3 lg:grid-cols-1" aria-label="Headline numbers">
-                {vibrant.chips.map((c) => (
-                  <li key={c.label} className="rounded-2xl border border-line bg-canvas px-5 py-4">
-                    <p className="font-display text-4xl leading-none tracking-tight">{c.value}</p>
-                    <p className="mt-2 text-sm text-muted">{c.label}</p>
-                  </li>
-                ))}
-              </ul>
             </div>
+
+            <ul className="mt-5 grid gap-x-8 gap-y-3 md:grid-cols-2">
+              {vibrant.bullets.map((b) => (
+                <li key={b} className="flex gap-3 text-[0.95rem] leading-relaxed text-ink-soft">
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-iris" aria-hidden />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
 
-        {/* Scenes: text scrolls, visual stays pinned on large screens. */}
-        <div className="mt-16 stage:mt-20 stage:grid stage:grid-cols-12 stage:gap-12">
-          <div className="stage:col-span-5">
-            {vibrantScenes.map((scene, i) => (
-              <SceneText
-                key={scene.id}
-                scene={scene}
-                active={active === i}
-                register={(el) => {
-                  sceneEls.current[i] = el;
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="hidden stage:col-span-7 stage:block">
+        {/* Explorer */}
+        <Reveal className="mt-8">
+          <p className="eyebrow">What I built here</p>
+          <div className="mt-3 grid gap-4 xl:grid-cols-[13.5rem_1fr] xl:gap-6">
             <div
-              className="sticky top-24 flex h-[calc(100dvh-7.5rem)] max-h-[46rem] flex-col"
-              data-active-scene={current.id}
+              role="tablist"
+              aria-label="Vibrant America projects"
+              aria-orientation="horizontal"
+              onKeyDown={onKeyDown}
+              className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 sm:-mx-8 sm:px-8 xl:mx-0 xl:flex-col xl:gap-1.5 xl:overflow-visible xl:px-0 xl:pb-0"
             >
-              {/* Keyed remount (no exit animation) so rapid scrolling can never leave the stage empty. */}
-              <motion.div
-                key={current.id}
-                className="min-h-0 flex-1"
-                initial={{ opacity: 0, scale: 0.97, y: 14 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <SceneVisual id={current.id} />
-              </motion.div>
-
-              <div className="mt-3 flex shrink-0 items-center justify-between gap-4" aria-hidden>
-                <div className="flex items-center gap-2">
-                  {vibrantScenes.map((s, i) => (
+              {vibrantScenes.map((s, i) => {
+                const selected = i === active;
+                return (
+                  <button
+                    key={s.id}
+                    ref={(el) => {
+                      tabRefs.current[i] = el;
+                    }}
+                    role="tab"
+                    id={`vtab-${s.id}`}
+                    aria-selected={selected}
+                    aria-controls="vpanel"
+                    tabIndex={selected ? 0 : -1}
+                    type="button"
+                    onClick={() => select(i)}
+                    className={`flex shrink-0 items-center justify-between gap-3 rounded-full border px-4 py-2 text-left text-sm font-medium transition-colors xl:rounded-2xl xl:py-2.5 ${
+                      selected
+                        ? "border-ink bg-ink text-canvas"
+                        : "border-line bg-paper text-ink-soft hover:border-ink/40"
+                    }`}
+                  >
+                    <span className="whitespace-nowrap">{s.tab}</span>
                     <span
-                      key={s.id}
-                      className={`h-1.5 rounded-full transition-all duration-500 ${
-                        i === active ? `w-8 ${a.bg}` : "w-3 bg-ink/20"
-                      }`}
-                    />
-                  ))}
+                      className={`hidden font-mono text-xs xl:block ${selected ? "text-white/70" : "text-muted"}`}
+                      aria-hidden
+                    >
+                      {s.metric.value}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div
+              role="tabpanel"
+              id="vpanel"
+              aria-labelledby={`vtab-${scene.id}`}
+              tabIndex={0}
+              className="card min-w-0 overflow-hidden !rounded-3xl p-4 sm:p-6"
+            >
+              <motion.div
+                key={scene.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="grid gap-5 lg:grid-cols-[1fr_1.05fr] lg:gap-7"
+              >
+                <div className="min-w-0">
+                  <span className="inline-flex items-baseline gap-2 rounded-full border border-line bg-canvas px-3 py-1">
+                    <span className="font-display text-lg font-semibold leading-none">{scene.metric.value}</span>
+                    <span className="text-xs text-muted">{scene.metric.label}</span>
+                  </span>
+                  <h3 className="display-md mt-3">{scene.title}</h3>
+
+                  <dl className="mt-4 space-y-3">
+                    {blocks.map((b) => (
+                      <div key={b.label} className="grid gap-0.5 sm:grid-cols-[4.75rem_1fr] sm:gap-3">
+                        <dt className={`font-mono text-[0.68rem] font-medium uppercase tracking-[0.16em] ${a.text} sm:pt-1`}>
+                          {b.label}
+                        </dt>
+                        <dd className="text-[0.92rem] leading-relaxed text-ink-soft">{b.body}</dd>
+                      </div>
+                    ))}
+                  </dl>
+
+                  {scene.caveat && <p className="mt-3 text-sm text-muted">Note: {scene.caveat}</p>}
+
+                  <ul className="mt-4 flex flex-wrap gap-2" aria-label="Tools used">
+                    {scene.tools.map((t) => (
+                      <li key={t} className="chip">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <span className="eyebrow">
-                  Scene {String(active + 1).padStart(2, "0")} / {String(vibrantScenes.length).padStart(2, "0")}
-                </span>
-              </div>
+
+                <div className="min-w-0 lg:h-[35rem]">
+                  <SceneVisual id={scene.id} />
+                </div>
+              </motion.div>
             </div>
           </div>
-        </div>
-
-        <Reveal className="mt-16 flex flex-col items-center text-center sm:mt-24">
-          <p className="eyebrow">The ending</p>
-          <p className="display-md mt-4 max-w-2xl">{vibrant.closing}</p>
-          <a href="#impact" className="btn btn-primary mt-8">
-            See the numbers
-            <ArrowDown className="h-4 w-4" aria-hidden />
-          </a>
         </Reveal>
       </div>
     </section>

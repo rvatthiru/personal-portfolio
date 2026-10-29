@@ -12,9 +12,6 @@ const config: Config = {
     extend: {
       screens: {
         xs: "420px",
-        // Wide AND tall enough that pinned (sticky) scenes never get clipped.
-        tall: { raw: "(min-width: 768px) and (min-height: 720px)" },
-        stage: { raw: "(min-width: 1024px) and (min-height: 700px)" },
       },
       colors: {
         canvas: "#FAF7F2",
@@ -56,29 +53,13 @@ const config: Config = {
         lift: "0 2px 0 rgba(20,17,15,0.04), 0 28px 60px -24px rgba(20,17,15,0.35)",
       },
       keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
         pulseDot: {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.35", transform: "scale(0.7)" },
         },
-        blink: {
-          "0%, 49%": { opacity: "1" },
-          "50%, 100%": { opacity: "0" },
-        },
       },
       animation: {
-        marquee: "marquee 45s linear infinite",
-        "marquee-slow": "marquee 70s linear infinite",
-        float: "float 7s ease-in-out infinite",
         "pulse-dot": "pulseDot 1.8s ease-in-out infinite",
-        blink: "blink 1s steps(1) infinite",
       },
     },
   },

@@ -19,7 +19,7 @@ function Screen({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-auto min-h-[24rem] w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink text-canvas shadow-lift stage:h-full">
+    <div className="flex h-full min-h-[24rem] w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink text-canvas shadow-lift">
       <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" aria-hidden />
@@ -148,7 +148,7 @@ function AttributionVisual() {
 
   return (
     <Screen title="attribution / touchpoints">
-      <div className="flex flex-1 flex-col gap-5">
+      <div className="flex flex-1 flex-col gap-4">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
           <div className="min-w-0">
             <Label>2025 revenue traced to touchpoints</Label>
